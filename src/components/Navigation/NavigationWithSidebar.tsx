@@ -25,9 +25,7 @@ function Navigation() {
 
                 {/* {isMobile ? null : (
                     <span className="text-white font-semibold text-2xl">
-                        Elite League of Information
-                        <br />
-                        Technology Students
+                        ELITS
                     </span>
                 )} */}
             </div>
