@@ -1,4 +1,4 @@
-import Navigation from "@/components/Navigation/SidebarWithNavigation";
+import Navigation from "@/app/components/Navigation/SidebarWithNavigation";
 
 
 export default function Home() {
