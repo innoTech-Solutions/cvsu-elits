@@ -22,43 +22,36 @@ function Navigation() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="logo.svg" alt="Logo" className="h-auto w-12 mr-2" />
                 <span className="text-white font-black text-2xl">ELITS</span>
-
-                {/* {isMobile ? null : (
-                    <span className="text-white font-semibold text-2xl">
-                        Elite League of Information
-                        <br />
-                        Technology Students
-                    </span>
-                )} */}
-            </div>
-
-            <div className="gap-4 flex items-center">
-                <Link href="/home">
-                    <span className="text-white text-md font-semibold cursor-pointer hover:text-orange-500 transition-colors duration-300">
-                        home
-                    </span>
-                </Link>
-                <Link href="/home">
-                    <span className="text-white text-md font-semibold cursor-pointer hover:text-orange-500 transition-colors duration-300">
-                        shop
-                    </span>
-                </Link>
             </div>
 
             {!isMobile && (
-                <div className="flex flex-row gap-4 items-center">
-                    <Link href="/aboutus">
+                <>
+                    <div className="gap-4 flex items-center">
+                    <Link href="/">
                         <span className="text-white text-md font-semibold cursor-pointer hover:text-orange-500 transition-colors duration-300">
-                            about us
+                            Home
                         </span>
                     </Link>
+                    <Link href="/shop">
+                        <span className="text-white text-md font-semibold cursor-pointer hover:text-orange-500 transition-colors duration-300">
+                            Shop
+                        </span>
+                    </Link>
+                    </div>
+                    <div className="flex flex-row gap-4 items-center">
+                        <Link href="/aboutus">
+                            <span className="text-white text-md font-semibold cursor-pointer hover:text-orange-500 transition-colors duration-300">
+                                About us
+                            </span>
+                        </Link>
 
-                    <Link href="/aboutdev">
-                        <span className="text-white text-xl font-semibold cursor-pointer hover:text-orange-500 transition-colors duration-300">
-                            <Code2 />
-                        </span>
-                    </Link>
-                </div>
+                        <Link href="/aboutdev">
+                            <span className="text-white text-xl font-semibold cursor-pointer hover:text-orange-500 transition-colors duration-300">
+                                <Code2 />
+                            </span>
+                        </Link>
+                    </div>
+                </>
             )}
 
             <div className="mr-4 md:mr-10 md:hidden">
