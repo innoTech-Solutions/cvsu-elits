@@ -1,12 +1,10 @@
-import Image from "next/image";
-import Test from "../components/Test";
+import Navigation from "@/components/Navigation/SidebarWithNavigation";
+
 
 export default function Home() {
   return (
     <>
-      <h1>
-          Home Page
-      </h1>
+      <Navigation/>
     </>
   );
 }
