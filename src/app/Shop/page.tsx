@@ -1,8 +1,9 @@
-import React from 'react'
+import MembershipCard from './MembershipCard'
 
 const Shop = () => {
   return (
-    <div>Shop</div>
+    <>
+    </>
   )
 }
 
