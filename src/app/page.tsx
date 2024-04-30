@@ -37,7 +37,7 @@ export default function Home() {
                     <div className="border-black border-b border-l border-t rounded-tl-[80px] rounded-bl-[80px] w-[16px] " />
 
                     <motion.div
-                        className="border-[#f18700] border-b border-l border-t absolute h-[calc(100%-30px)] origin-top top-[30px] bottom-[30px]"
+                        className="border-[#f18700] border-b border-l border-t absolute h-[calc(100%-40px)] origin-top top-[20px]"
                         style={{ scaleY: scaleY }}
                     />
 
@@ -55,6 +55,9 @@ export default function Home() {
                             <div className="w-4 border-t border-black -translate-x-full" />
                         </LinkComponent>
                         <LinkComponent href={"#news"} text={"news"}>
+                            <div className="w-4 border-t border-black -translate-x-full" />
+                        </LinkComponent>
+                        <LinkComponent href={"#events"} text={"events"}>
                             <div className="w-4 border-t border-black -translate-x-full" />
                         </LinkComponent>
                         <LinkComponent href={"#joinus"} text={"join us"}>

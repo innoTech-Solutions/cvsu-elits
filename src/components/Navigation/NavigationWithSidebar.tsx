@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { Code, Code2 } from "lucide-react";
 
 function Navigation() {
     const [isMobile, setIsMobile] = useState(false);
@@ -16,22 +17,49 @@ function Navigation() {
     }, []);
 
     return (
-        <nav className="bg-[#2F3233] flex items-center justify-between p-4 w-full drop-shadow-xl">
-            <div className="flex items-center cursor-pointer ml-4 md:ml-10">
+        <nav className="bg-[#2F3233] flex items-center justify-between px-8 py-2 w-full drop-shadow-xl">
+            <div className="flex items-center cursor-pointer">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                    src="logo.svg"
-                    alt="Logo"
-                    className="h-auto w-16 mr-2"
-                />
-                {isMobile ? null : (
+                <img src="logo.svg" alt="Logo" className="h-auto w-12 mr-2" />
+                <span className="text-white font-black text-2xl">ELITS</span>
+
+                {/* {isMobile ? null : (
                     <span className="text-white font-semibold text-2xl">
                         Elite League of Information
                         <br />
                         Technology Students
                     </span>
-                )}
+                )} */}
             </div>
+
+            <div className="gap-4 flex items-center">
+                <Link href="/home">
+                    <span className="text-white text-md font-semibold cursor-pointer hover:text-orange-500 transition-colors duration-300">
+                        home
+                    </span>
+                </Link>
+                <Link href="/home">
+                    <span className="text-white text-md font-semibold cursor-pointer hover:text-orange-500 transition-colors duration-300">
+                        shop
+                    </span>
+                </Link>
+            </div>
+
+            {!isMobile && (
+                <div className="flex flex-row gap-4 items-center">
+                    <Link href="/aboutus">
+                        <span className="text-white text-md font-semibold cursor-pointer hover:text-orange-500 transition-colors duration-300">
+                            about us
+                        </span>
+                    </Link>
+
+                    <Link href="/aboutdev">
+                        <span className="text-white text-xl font-semibold cursor-pointer hover:text-orange-500 transition-colors duration-300">
+                            <Code2 />
+                        </span>
+                    </Link>
+                </div>
+            )}
 
             <div className="mr-4 md:mr-10 md:hidden">
                 <svg
@@ -51,26 +79,14 @@ function Navigation() {
                     />
                 </svg>
             </div>
-
-            {!isMobile && (
-                <div className="mr-4 md:mr-10">
-                    <Link href="./WhoWeAre">
-                        <span className="text-white text-xl font-semibold cursor-pointer hover:text-orange-500 transition-colors duration-300">
-                            Who we are
-                        </span>
-                    </Link>
-                </div>
-            )}
         </nav>
     );
 }
 
 const NavigationWithSidebar: React.FC = () => {
     return (
-        <div className="flex flex-col">
-            <div className="flex-1">
-                <Navigation />
-            </div>
+        <div className="flex flex-col fixed w-full ">
+            <Navigation />
         </div>
     );
 };
