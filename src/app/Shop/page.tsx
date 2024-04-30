@@ -1,4 +1,4 @@
-import MembershipCard from './MembershipCard'
+import MembershipCard from '../../components/MembershipCard'
 
 const Shop = () => {
   return (
