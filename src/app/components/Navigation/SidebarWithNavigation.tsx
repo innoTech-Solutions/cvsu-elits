@@ -1,5 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
+import Link from "next/link";
 
 function Sidebar() {
   return (
@@ -9,7 +10,7 @@ function Sidebar() {
         width="1em"
         height="1em"
         viewBox="0 0 24 24"
-        className="text-black w-8 h-8 absolute top-8 cursor-pointer"
+        className="text-black w-8 h-8 absolute top-8 cursor-pointer transition-transform duration-300 transform hover:rotate-180"
       >
         <path
           fill="none"
@@ -24,21 +25,22 @@ function Sidebar() {
   );
 };
 
+
 function Navigation() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // Adjust the breakpoint as needed
+      setIsMobile(window.innerWidth < 768);
     };
 
-    handleResize(); // Initial check
+    handleResize(); 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
-    <nav className="bg-[#2F3233] flex items-center justify-between p-4 w-full">
+    <nav className="bg-[#2F3233] flex items-center justify-between p-4 w-full drop-shadow-xl">
       <div className="flex items-center cursor-pointer ml-4 md:ml-10">
         <img
           src="images/logo.png"
@@ -46,7 +48,9 @@ function Navigation() {
           className="h-8 w-auto mr-2"
         />
         {isMobile ? null : (
-          <span className="text-white font-semibold text-2xl">Elite League of Information<br/>Technology Students</span>
+            <span className="text-white font-semibold text-2xl">
+              Elite League of Information<br/>Technology Students
+            </span>
         )}
       </div>
       <div className="mr-4 md:mr-10 md:hidden">
@@ -55,7 +59,7 @@ function Navigation() {
           width="24"
           height="24"
           viewBox="0 0 24 24"
-          className="text-white w-8 h-8"
+          className="text-white w-8 h-8 cursor-pointer"
         >
           <path
             fill="none"
@@ -69,9 +73,11 @@ function Navigation() {
       </div>
       {!isMobile && (
         <div className="mr-4 md:mr-10">
-          <span className="text-white text-xl font-semibold cursor-pointer hover:text-orange-500 transition-colors duration-300">
-            Who we are
-          </span>
+           <Link href='./WhoWeAre'>
+            <span className="text-white text-xl font-semibold cursor-pointer hover:text-orange-500 transition-colors duration-300">
+              Who we are
+            </span>
+           </Link>
         </div>
       )}
     </nav>
