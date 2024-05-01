@@ -1,4 +1,9 @@
 "use client";
+import Awards from "@/components/Landing Page/Awards";
+import Events from "@/components/Landing Page/Events";
+import History from "@/components/Landing Page/History";
+import JoinUs from "@/components/Landing Page/JoinUs";
+import Updates from "@/components/Landing Page/Updates";
 import { motion, useScroll, useSpring } from "framer-motion";
 import Link from "next/link";
 
@@ -24,7 +29,7 @@ export default function Home() {
                 <Link href={href}>
                     <div className={`flex flex-row items-center`}>
                         {children}
-                        <p className="text-md text-sm capitalize">{text}</p>
+                        <p className="text-md text-md font-semibold capitalize hover:text-orange-500 transition duration-150">{text}</p>
                     </div>
                 </Link>
             );
@@ -41,25 +46,25 @@ export default function Home() {
                     />
 
                     <div className="flex-col gap-10 -my-2 h-full flex">
-                        <LinkComponent href={"#hero"} text={"home"}>
-                            <div className="w-4 -translate-x-full" />
+                        <LinkComponent href={"#hero"} text={"Home"}>
+                            <div className="w-4 -translate-x-full font-semibold" />
                         </LinkComponent>
                         <LinkComponent
                             href={"#historical_background"}
-                            text={"history"}
+                            text={"History"}
                         >
                             <div className="w-4 border-t border-black -translate-x-full" />
                         </LinkComponent>
-                        <LinkComponent href={"#awards"} text={"awards"}>
+                        <LinkComponent href={"#awards"} text={"Awards"}>
                             <div className="w-4 border-t border-black -translate-x-full" />
                         </LinkComponent>
-                        <LinkComponent href={"#news"} text={"news"}>
+                        <LinkComponent href={"#news"} text={"News"}>
                             <div className="w-4 border-t border-black -translate-x-full" />
                         </LinkComponent>
-                        <LinkComponent href={"#events"} text={"events"}>
+                        <LinkComponent href={"#events"} text={"Events"}>
                             <div className="w-4 border-t border-black -translate-x-full" />
                         </LinkComponent>
-                        <LinkComponent href={"#joinus"} text={"join us"}>
+                        <LinkComponent href={"#joinus"} text={"Join us"}>
                             <div className="w-4 -translate-x-full" />
                         </LinkComponent>
                     </div>
@@ -73,29 +78,17 @@ export default function Home() {
             <Sidebar />
             {/* LANDING PAGE */}
             <div>
-                <div className={"hero h-screen bg-blue-500"} id={"hero"}>
-                    <p className="text-md">home</p>
-                </div>
+                
+                <History/>
 
-                <div
-                    className={"h-screen bg-red-500"}
-                    id={"historical_background"}
-                >
-                    <p className="text-md">history</p>
-                </div>
+                <Awards/>
 
-                <div className={"awards h-screen bg-green-500"} id={"awards"}>
-                    <p className="text-md">awards</p>
-                </div>
+                <Updates/>
 
-                <div className={"h-screen bg-blue-500"} id={"news"}>
-                    <p className="text-md">news</p>
-                </div>
+                <Events/>
 
-                <div className={"h-screen bg-pink-500"} id={"joinus"}>
-                    <p className="text-md">joinus</p>
-                </div>
-                <div className=""></div>
+                <JoinUs/>
+
             </div>
         </div>
     );
