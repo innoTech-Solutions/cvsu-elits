@@ -4,6 +4,7 @@ import Events from "@/components/Landing Page/Events";
 import History from "@/components/Landing Page/History";
 import JoinUs from "@/components/Landing Page/JoinUs";
 import Updates from "@/components/Landing Page/Updates";
+import MembershipCard from "@/components/MembershipCard";
 import { motion, useScroll, useSpring } from "framer-motion";
 import Link from "next/link";
 
@@ -29,7 +30,9 @@ export default function Home() {
                 <Link href={href}>
                     <div className={`flex flex-row items-center`}>
                         {children}
-                        <p className="text-md text-md font-semibold capitalize hover:text-orange-500 transition duration-150">{text}</p>
+                        <p className="text-md text-md font-semibold capitalize hover:text-orange-500 transition duration-150">
+                            {text}
+                        </p>
                     </div>
                 </Link>
             );
@@ -78,17 +81,54 @@ export default function Home() {
             <Sidebar />
             {/* LANDING PAGE */}
             <div>
-                
-                <History/>
+                <div className="flex justify-center">
+                    <MembershipCard
+                        className="max-w-lg"
+                        membershipType="silver Membership"
+                        perks={[
+                            "Exclusive access to events",
+                            "Monthly newsletters",
+                            "Discounts at partner stores",
+                            "Up to 50% off on events",
+                        ]}
+                        price="$99"
+                        priceDescription="per year"
+                        accessToResources={[
+                            "Online courses",
+                            "Member-only forums",
+                            "Networking events",
+                        ]}
+                        headerColor="#f18700"
+                    />
+                </div>
 
-                <Awards/>
+                <MembershipCard
+                    className="max-w-lg"
+                    membershipType="Gold Membership"
+                    perks={[
+                        "Exclusive access to events",
+                        "Monthly newsletters",
+                        "Discounts at partner stores",
+                        "Up to 50% off on events",
+                    ]}
+                    price="$99"
+                    priceDescription="per year"
+                    accessToResources={[
+                        "Online courses",
+                        "Member-only forums",
+                        "Networking events",
+                    ]}
+                />
 
-                <Updates/>
+                <History />
 
-                <Events/>
+                <Awards />
 
-                <JoinUs/>
+                <Updates />
 
+                <Events />
+
+                <JoinUs />
             </div>
         </div>
     );
