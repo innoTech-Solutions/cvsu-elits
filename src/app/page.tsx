@@ -80,8 +80,9 @@ export default function Home() {
     return (
         <div className="">
             <Sidebar />
+
             {/* LANDING PAGE */}
-            <div className="px-12 md:px-32">
+            <div className="px-12 md:px-32 ">
                 <div id="hero">
                     <HeroSection />
                 </div>
@@ -96,12 +97,12 @@ export default function Home() {
 
                 {/* JULIAN: working on updates */}
                 <div id="updates">
-                    <Updates />
+                    <Updates className="min-h-screen my-4" />
                 </div>
 
                 {/* JULIAN: working on events */}
                 <div id="events">
-                    <Events />
+                    <Events className="min-h-screen my-4"/>
                 </div>
 
                 <div id="joinus">
