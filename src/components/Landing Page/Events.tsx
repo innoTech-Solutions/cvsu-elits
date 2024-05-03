@@ -8,6 +8,7 @@ import {
     CarouselPrevious,
 } from "../ui/carousel";
 import { Calendar, MapPin } from "lucide-react";
+import { Badge } from "../ui/badge";
 
 type UpcomingEvents = {
     title: string;
@@ -15,6 +16,7 @@ type UpcomingEvents = {
     img: string[];
     when: Date;
     where: string;
+    category: string;
 };
 
 const upcomingEvents: UpcomingEvents[] = [
@@ -24,6 +26,7 @@ const upcomingEvents: UpcomingEvents[] = [
         img: ["http://unsplash.it/800/600?random&gravity=center"],
         when: new Date(),
         where: "CvSU Main Campus",
+        category: "Sports",
     },
     {
         title: "Tech Conference",
@@ -31,6 +34,7 @@ const upcomingEvents: UpcomingEvents[] = [
         img: ["http://unsplash.it/800/600?random&gravity=center"],
         when: new Date(),
         where: "Tech Center",
+        category: "Technology",
     },
     {
         title: "Art Exhibition",
@@ -38,6 +42,7 @@ const upcomingEvents: UpcomingEvents[] = [
         img: ["http://unsplash.it/800/600?random&gravity=center"],
         when: new Date(),
         where: "Art Gallery",
+        category: "Arts & Music",
     },
     {
         title: "Music Festival",
@@ -45,6 +50,7 @@ const upcomingEvents: UpcomingEvents[] = [
         img: ["http://unsplash.it/800/600?random&gravity=center"],
         when: new Date(),
         where: "Music Park",
+        category: "Arts & Music",
     },
     {
         title: "Food Fair",
@@ -52,6 +58,7 @@ const upcomingEvents: UpcomingEvents[] = [
         img: ["http://unsplash.it/800/600?random&gravity=center"],
         when: new Date(),
         where: "Food Court",
+        category: "Food",
     },
     {
         title: "Book Fair",
@@ -59,6 +66,7 @@ const upcomingEvents: UpcomingEvents[] = [
         img: ["http://unsplash.it/800/600?random&gravity=center"],
         when: new Date(),
         where: "Library",
+        category: "Arts & Music",
     },
     {
         title: "Charity Run",
@@ -66,6 +74,7 @@ const upcomingEvents: UpcomingEvents[] = [
         img: ["http://unsplash.it/800/600?random&gravity=center"],
         when: new Date(),
         where: "City Park",
+        category: "Arts & Music",
     },
     {
         title: "Film Festival",
@@ -73,6 +82,7 @@ const upcomingEvents: UpcomingEvents[] = [
         img: ["http://unsplash.it/800/600?random&gravity=center"],
         when: new Date(),
         where: "Cinema",
+        category: "Arts & Music",
     },
     {
         title: "Fashion Show",
@@ -80,6 +90,7 @@ const upcomingEvents: UpcomingEvents[] = [
         img: ["http://unsplash.it/800/600?random&gravity=center"],
         when: new Date(),
         where: "Fashion Center",
+        category: "Arts & Music",
     },
     {
         title: "Science Fair",
@@ -87,6 +98,7 @@ const upcomingEvents: UpcomingEvents[] = [
         img: ["http://unsplash.it/800/600?random&gravity=center"],
         when: new Date(),
         where: "Science Museum",
+        category: "Technology",
     },
     {
         title: "Business Expo",
@@ -94,6 +106,7 @@ const upcomingEvents: UpcomingEvents[] = [
         img: ["http://unsplash.it/800/600?random&gravity=center"],
         when: new Date(),
         where: "Expo Center",
+        category: "Technology",
     },
     {
         title: "Health and Wellness Fair",
@@ -101,6 +114,7 @@ const upcomingEvents: UpcomingEvents[] = [
         img: ["http://unsplash.it/800/600?random&gravity=center"],
         when: new Date(),
         where: "Health Center",
+        category: "Technology",
     },
 ];
 
@@ -126,11 +140,17 @@ const Events = ({ className }: { className: string }) => {
                                     className="pl-4 basis-1/2 lg:basis-1/3 xl:basis-1/4"
                                     key={i}
                                 >
-                                    <img
-                                        className="w-full h-64 object-cover rounded-t-xl"
-                                        src={event.img[0]}
-                                        alt={"Carousel Image" + i}
-                                    />
+                                    <div className="relative">
+                                        <Badge variant={"secondary"} className="absolute top-2 right-2">
+                                            {event.category}
+                                        </Badge>
+                                        <img
+                                            className="w-full h-64 object-cover rounded-t-xl"
+                                            src={event.img[0]}
+                                            alt={"Carousel Image" + i}
+                                        />
+                                    </div>
+
                                     <div className="rounded-t-2xl translate -translate-y-4 bg-white p-2">
                                         <h2 className="text-lg font-bold">
                                             {event.title}
