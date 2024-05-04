@@ -78,7 +78,7 @@ function Navigation() {
 
 const NavigationWithSidebar: React.FC = () => {
     return (
-        <div className="flex flex-col fixed w-full ">
+        <div className="flex flex-col fixed w-full z-50">
             <Navigation />
         </div>
     );
