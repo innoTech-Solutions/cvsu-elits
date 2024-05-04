@@ -133,7 +133,7 @@ const Updates = ({ className }: { className: string }) => {
                 {/* LARGE NEWS (1) */}
                 <Link href={""} className="w-full lg:w-1/2 flex flex-col">
                     <img
-                        className="rounded-xl bg-pink-500"
+                        className="rounded-xl"
                         src={newsAndUpdates[0].img[0]}
                         alt={`${newsAndUpdates[0].title}.img`}
                     />
@@ -168,7 +168,7 @@ const Updates = ({ className }: { className: string }) => {
                             className="w-52 h-full lg:h-full lg:w-full flex flex-col lg:flex-row"
                         >
                             <img
-                                className="rounded-xl bg-blue-500 w-52 h-52 object-cover"
+                                className="rounded-xl w-52 h-52 object-cover"
                                 src={news.img[0]}
                                 alt={`${news.title}.img`}
                             />

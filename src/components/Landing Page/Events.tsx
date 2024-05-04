@@ -14,7 +14,7 @@ type UpcomingEvents = {
     title: string;
     description: string;
     img: string[];
-    when: Date;
+    when: string;
     where: string;
     category: string;
 };
@@ -24,7 +24,11 @@ const upcomingEvents: UpcomingEvents[] = [
         title: "UGames upcoming in CvSU!",
         description: "It is going to be the largest event ever!",
         img: ["http://unsplash.it/800/600?random&gravity=center"],
-        when: new Date(),
+        when: new Date(Date.now()).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+        }),
         where: "CvSU Main Campus",
         category: "Sports",
     },
@@ -32,7 +36,13 @@ const upcomingEvents: UpcomingEvents[] = [
         title: "Tech Conference",
         description: "Join us for a day of tech talks and networking.",
         img: ["http://unsplash.it/800/600?random&gravity=center"],
-        when: new Date(),
+
+        when: new Date(Date.now()).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+        }),
+
         where: "Tech Center",
         category: "Technology",
     },
@@ -40,7 +50,13 @@ const upcomingEvents: UpcomingEvents[] = [
         title: "Art Exhibition",
         description: "Experience the stunning artwork of local artists.",
         img: ["http://unsplash.it/800/600?random&gravity=center"],
-        when: new Date(),
+
+        when: new Date(Date.now()).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+        }),
+
         where: "Art Gallery",
         category: "Arts & Music",
     },
@@ -48,7 +64,13 @@ const upcomingEvents: UpcomingEvents[] = [
         title: "Music Festival",
         description: "Enjoy performances from your favorite artists.",
         img: ["http://unsplash.it/800/600?random&gravity=center"],
-        when: new Date(),
+
+        when: new Date(Date.now()).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+        }),
+
         where: "Music Park",
         category: "Arts & Music",
     },
@@ -56,7 +78,13 @@ const upcomingEvents: UpcomingEvents[] = [
         title: "Food Fair",
         description: "Taste delicious food from around the world.",
         img: ["http://unsplash.it/800/600?random&gravity=center"],
-        when: new Date(),
+
+        when: new Date(Date.now()).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+        }),
+
         where: "Food Court",
         category: "Food",
     },
@@ -64,7 +92,13 @@ const upcomingEvents: UpcomingEvents[] = [
         title: "Book Fair",
         description: "Discover new books and meet your favorite authors.",
         img: ["http://unsplash.it/800/600?random&gravity=center"],
-        when: new Date(),
+
+        when: new Date(Date.now()).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+        }),
+
         where: "Library",
         category: "Arts & Music",
     },
@@ -72,7 +106,13 @@ const upcomingEvents: UpcomingEvents[] = [
         title: "Charity Run",
         description: "Run for a good cause.",
         img: ["http://unsplash.it/800/600?random&gravity=center"],
-        when: new Date(),
+
+        when: new Date(Date.now()).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+        }),
+
         where: "City Park",
         category: "Arts & Music",
     },
@@ -80,7 +120,13 @@ const upcomingEvents: UpcomingEvents[] = [
         title: "Film Festival",
         description: "Watch the premieres of new films.",
         img: ["http://unsplash.it/800/600?random&gravity=center"],
-        when: new Date(),
+
+        when: new Date(Date.now()).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+        }),
+
         where: "Cinema",
         category: "Arts & Music",
     },
@@ -88,7 +134,13 @@ const upcomingEvents: UpcomingEvents[] = [
         title: "Fashion Show",
         description: "See the latest fashion trends.",
         img: ["http://unsplash.it/800/600?random&gravity=center"],
-        when: new Date(),
+
+        when: new Date(Date.now()).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+        }),
+
         where: "Fashion Center",
         category: "Arts & Music",
     },
@@ -96,7 +148,13 @@ const upcomingEvents: UpcomingEvents[] = [
         title: "Science Fair",
         description: "Explore exciting new scientific discoveries.",
         img: ["http://unsplash.it/800/600?random&gravity=center"],
-        when: new Date(),
+
+        when: new Date(Date.now()).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+        }),
+
         where: "Science Museum",
         category: "Technology",
     },
@@ -104,7 +162,13 @@ const upcomingEvents: UpcomingEvents[] = [
         title: "Business Expo",
         description: "Learn about new business opportunities.",
         img: ["http://unsplash.it/800/600?random&gravity=center"],
-        when: new Date(),
+
+        when: new Date(Date.now()).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+        }),
+
         where: "Expo Center",
         category: "Technology",
     },
@@ -112,7 +176,13 @@ const upcomingEvents: UpcomingEvents[] = [
         title: "Health and Wellness Fair",
         description: "Discover ways to improve your health and wellness.",
         img: ["http://unsplash.it/800/600?random&gravity=center"],
-        when: new Date(),
+
+        when: new Date(Date.now()).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+        }),
+
         where: "Health Center",
         category: "Technology",
     },
@@ -154,7 +224,7 @@ const Events = ({ className }: { className: string }) => {
                                         />
                                     </div>
 
-                                    <div className="rounded-t-2xl translate -translate-y-4 bg-white p-2">
+                                    <div className="rounded-t-2xl translate -translate-y-4 bg-white px-4 py-2">
                                         <h2 className="text-lg font-bold">
                                             {event.title}
                                         </h2>
@@ -164,8 +234,7 @@ const Events = ({ className }: { className: string }) => {
                                                 className="mr-2"
                                                 size={16}
                                             />
-                                            {event.when.toLocaleDateString()} at{" "}
-                                            {event.when.toLocaleTimeString()}
+                                            {event.when}
                                         </p>
 
                                         <p className="flex flex-row">

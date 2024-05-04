@@ -78,7 +78,7 @@ export default function Home() {
     };
 
     return (
-        <div className="">
+        <>
             <Sidebar />
 
             {/* LANDING PAGE */}
@@ -91,10 +91,6 @@ export default function Home() {
                     <History />
                 </div>
 
-                {/*
-                    assigned: JULIAN
-                    status: WIP
-                */}
                 <div id="awards">
                     <Awards />
                 </div>
@@ -112,13 +108,13 @@ export default function Home() {
                     status: DONE
                 */}
                 <div id="events">
-                    <Events className="min-h-screen my-4" />
+                    <Events className="my-4" />
                 </div>
 
                 <div id="joinus">
-                    <JoinUs />
+                    <JoinUs className="min-h-screen my-4"/>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
