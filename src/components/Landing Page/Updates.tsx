@@ -127,9 +127,9 @@ const Updates = ({ className }: { className: string }) => {
     // can implement MDX for news viewing
     return (
         <div className={`${className}`}>
-            <h1 className="text-4xl font-bold py-8">Latest news</h1>
+            <h1 className="text-4xl font-bold py-8 ml-5">Latest news</h1>
 
-            <div className="flex flex-col lg:flex-row gap-4">
+            <div className="flex flex-col lg:flex-row gap-4 ml-5">
                 {/* LARGE NEWS (1) */}
                 <Link href={""} className="w-full lg:w-1/2 flex flex-col">
                     <img
@@ -202,7 +202,7 @@ const Updates = ({ className }: { className: string }) => {
             </div>
             {/* THE REST (6) */}
 
-            <div className="flex justify-end cursor-pointer">
+            <div className="flex justify-end cursor-pointer mr-10">
                 <Button variant={"ghost"} className="border-black border">
                     View all
                 </Button>

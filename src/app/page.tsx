@@ -5,7 +5,6 @@ import HeroSection from "@/components/Landing Page/HeroSection";
 import History from "@/components/Landing Page/History";
 import JoinUs from "@/components/Landing Page/JoinUs";
 import Updates from "@/components/Landing Page/Updates";
-import MembershipCard from "@/components/MembershipCard";
 import { motion, useScroll, useSpring } from "framer-motion";
 import Link from "next/link";
 
@@ -28,19 +27,19 @@ export default function Home() {
             children: React.ReactNode;
         }) => {
             return (
-                <Link href={href}>
-                    <div className={`flex flex-row items-center`}>
-                        {children}
-                        <p className="text-xs md:text-lg font-bold hover:text-orange-500 transition duration-150 lowercase">
-                            {text}
-                        </p>
-                    </div>
-                </Link>
+                    <Link href={href}>
+                        <div className={`flex flex-row items-center`}>
+                            {children}
+                            <p className="text-xs md:text-lg font-bold hover:text-orange-500 transition duration-150 lowercase">
+                                {text}
+                            </p>
+                        </div>
+                    </Link>
             );
         };
 
         return (
-            <div className=" h-[100vh] flex items-center mx-4">
+            <div className="flex items-center mx-4">
                 <div className="flex flex-row fixed ">
                     <div className="border-black border-b border-l border-t rounded-tl-[80px] rounded-bl-[80px] w-[16px] " />
 
@@ -78,11 +77,18 @@ export default function Home() {
     };
 
     return (
-        <div className="">
-            <Sidebar />
+            <div>
 
-            {/* LANDING PAGE */}
-            <div className="px-12 md:px-32 ">
+                {/**
+                 *  Side Guide Navbar
+                 */}
+                <div className="fixed left-0 z-50 top-1/2 transform -translate-y-1/2">
+                    <Sidebar/>
+                </div>
+
+                {/**
+                 *  Landing Page
+                 */}
                 <div id="hero">
                     <HeroSection />
                 </div>
@@ -109,6 +115,5 @@ export default function Home() {
                     <JoinUs />
                 </div>
             </div>
-        </div>
     );
 }

@@ -1,5 +1,4 @@
 import React from "react";
-import { Card, CardContent, CardDescription, CardHeader } from "../ui/card";
 import {
     Carousel,
     CarouselContent,
@@ -121,7 +120,7 @@ const upcomingEvents: UpcomingEvents[] = [
 const Events = ({ className }: { className: string }) => {
     return (
         <div className={`${className}`}>
-            <div>
+            <div className="mx-10">
                 <h1 className="text-4xl font-bold py-8">Upcoming Events</h1>
                 <Carousel
                     className="rounded-t-lg z-0"
