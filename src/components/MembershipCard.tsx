@@ -84,7 +84,7 @@ const MembershipCard = ({
                                 Join Now
                             </Button>
                             <Button
-                                className={`text-[${textColor}]`}
+                                className={`text-[${textColor}] hover:bg-orange-500 transition duration-200`}
                                 variant={"secondary"}
                             >
                                 Chat representative
@@ -125,15 +125,8 @@ const MembershipCard = ({
                             </div>
 
                             <div>
-                                <h2
-                                    className={`text-md text-[${textColor}]font-bold`}
-                                >
-                                    Resources
-                                </h2>
-                                <p className={`text-sm text-[${textColor}]`}>
-                                    resources access for <br />
-                                    {membershipType}
-                                </p>
+                                <br/>
+                                <br/>
                                 <ul className="list-none mb-4">
                                     {accessToResources.map(
                                         (resource, index) => (
