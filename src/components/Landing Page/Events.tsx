@@ -141,7 +141,10 @@ const Events = ({ className }: { className: string }) => {
                                     key={i}
                                 >
                                     <div className="relative">
-                                        <Badge variant={"secondary"} className="absolute top-2 right-2">
+                                        <Badge
+                                            variant={"secondary"}
+                                            className="absolute top-2 right-2"
+                                        >
                                             {event.category}
                                         </Badge>
                                         <img

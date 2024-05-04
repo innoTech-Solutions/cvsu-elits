@@ -91,18 +91,28 @@ export default function Home() {
                     <History />
                 </div>
 
+                {/*
+                    assigned: JULIAN
+                    status: WIP
+                */}
                 <div id="awards">
                     <Awards />
                 </div>
 
-                {/* JULIAN: working on updates */}
+                {/*
+                    assigned: JULIAN
+                    status: DONE
+                */}
                 <div id="updates">
                     <Updates className="min-h-screen my-4" />
                 </div>
 
-                {/* JULIAN: working on events */}
+                {/*
+                    assigned: JULIAN
+                    status: DONE
+                */}
                 <div id="events">
-                    <Events className="min-h-screen my-4"/>
+                    <Events className="min-h-screen my-4" />
                 </div>
 
                 <div id="joinus">

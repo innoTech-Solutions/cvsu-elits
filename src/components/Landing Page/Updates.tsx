@@ -165,7 +165,7 @@ const Updates = ({ className }: { className: string }) => {
                         <Link
                             href={""}
                             key={index}
-                            className="w-full flex flex-col lg:flex-row"
+                            className="w-52 h-full lg:h-full lg:w-full flex flex-col lg:flex-row"
                         >
                             <img
                                 className="rounded-xl bg-blue-500 w-52 h-52 object-cover"
@@ -173,28 +173,36 @@ const Updates = ({ className }: { className: string }) => {
                                 alt={`${news.title}.img`}
                             />
 
-                            <div className="lg:mx-4 flex flex-col">
-                                <p>
-                                    {newsAndUpdates[0].authorName} •{" "}
-                                    {new Date(
-                                        newsAndUpdates[0].datePosted
-                                    ).toLocaleDateString("en-US", {
-                                        year: "numeric",
-                                        month: "2-digit",
-                                        day: "2-digit",
-                                    })}
-                                </p>
+                            <div className="lg:mx-4 flex flex-col overflow-hidden mb-4">
+                                {newsAndUpdates[0].authorName} •{" "}
+                                {new Date(
+                                    newsAndUpdates[0].datePosted
+                                ).toLocaleDateString("en-US", {
+                                    year: "numeric",
+                                    month: "2-digit",
+                                    day: "2-digit",
+                                })}
+<h2 className="text-lg font-bold block md:hidden">
+    {news.title.length > 30 
+        ? `${news.title.slice(0, 30)}...` 
+        : news.title}
+</h2>
+<h2 className="text-lg font-bold hidden md:block">
+    {news.title.length > 100 
+        ? `${news.title.slice(0, 100)}...` 
+        : news.title}
+</h2>
 
-                                <h2 className="text-lg font-bold">
-                                    {news.title}
-                                </h2>
-
-                                <p>
-                                    {newsAndUpdates[0].description.slice(
-                                        0,
-                                        100
-                                    ) + "..."}
-                                </p>
+<p className="block md:hidden">
+    {news.description.length > 30 
+        ? `${news.description.slice(0, 30)}...` 
+        : news.description}
+</p>
+<p className="hidden md:block">
+    {news.description.length > 100 
+        ? `${news.description.slice(0, 100)}...` 
+        : news.description}
+</p>
                             </div>
                         </Link>
                     ))}
