@@ -17,7 +17,7 @@ function Navigation() {
     }, []);
 
     return (
-        <nav className="bg-[#2F3233] flex items-center justify-between px-8 py-2 w-full drop-shadow-xl">
+        <nav className="bg-[#2F3233] bg-opacity-60 backdrop-blur-md flex items-center justify-between px-8 py-2 w-full drop-shadow-xl">
             <div className="flex items-center cursor-pointer">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="logo.svg" alt="Logo" className="h-auto w-12 mr-2" />
