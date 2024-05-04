@@ -2,7 +2,7 @@ import React from 'react'
 
 {
   /**
-   *  JAMESON: It will improved more soon, 
+   *  JAMESON: It will improve more soon, 
    *  plan to add animation with it
    * 
    *  Feel free to modify the design or layout if you have better design idea!
