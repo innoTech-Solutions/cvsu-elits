@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Montserrat as Inter } from "next/font/google";
 import "./globals.css";
 import NavigationWithSidebar from "@/components/Navigation/NavigationWithSidebar";
+import Footer from "@/components/Footer/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "CVSU Elits",
@@ -17,10 +17,11 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={inter.className}>
+            <body className="bg-gray-100">
                 <main>
                     <NavigationWithSidebar />
                     {children}
+                    <Footer/>
                 </main>
             </body>
         </html>

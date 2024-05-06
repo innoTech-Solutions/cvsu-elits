@@ -21,7 +21,9 @@ function Navigation() {
             <div className="flex items-center cursor-pointer">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="logo.svg" alt="Logo" className="h-auto w-12 mr-2" />
-                <span className="text-white font-black text-2xl">ELITS</span>
+                <Link href='/'>
+                    <span className="text-white font-black text-2xl">ELITS</span>
+                </Link>
             </div>
 
             {!isMobile && (
