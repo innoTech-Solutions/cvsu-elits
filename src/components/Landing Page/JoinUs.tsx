@@ -55,7 +55,7 @@ const JoinUs = ({ className }: { className: string }) => {
                                 <button
                                     className="font-medium text-orange-500 transition-all duration-300 hover:text-orange-500/80"
                                 >
-                                    Apply Now
+                                    Join
                                 </button>
                             </div>
                         </div>
