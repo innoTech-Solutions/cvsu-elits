@@ -4,7 +4,13 @@ import { ParallaxTilt } from '../decorations/tilt';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const HeroSection: React.FC = () => {
+const HeroSection = () => {
+  let isMobile = false; 
+
+  if (typeof window !== 'undefined') {
+    isMobile = window.innerWidth < 768; 
+  }
+
   return (
     <div className="relative">
       <div className="absolute inset-0 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)]"/>
@@ -15,7 +21,7 @@ const HeroSection: React.FC = () => {
               initial={{ x: -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.5, duration: 1, type: 'spring', stiffness: 120 }}
-              className="mb-4 text-2xl font-bold leading-tight text-center md:text-left md:text-6xl font-bold"
+              className={`mb-4 text-2xl font-bold leading-tight text-center md:text-left md:text-6xl font-bold ${isMobile ? 'text-4xl' : ''}`}
             >
               Welcome <span className='text-orange-500'>Tigreans!</span>
             </motion.h1>
@@ -23,11 +29,13 @@ const HeroSection: React.FC = () => {
               initial={{ x: -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 1, duration: 1, type: 'spring', stiffness: 120 }}
-              className="mb-8 text-lg text-center md:text-left md:text-xl font-mono"
+              className={`mb-8 text-lg text-center md:text-left md:text-xl font-mono ${isMobile ? 'text-md leading-normal' : ''}`}
             >
-              Welcome to our <b>school organization's online platform!<br/></b> 
-              Here, you can stay updated with our <span className='text-orange-500'>latest events</span>,<br/>
+              Welcome to our <b>school organization's online platform!</b><br/>
+              Here, you can stay updated with our <span className='text-orange-500'>latest events</span>,
+              {!isMobile && <br />} 
               <span className='text-orange-500'>connect with fellow members</span>, 
+              {!isMobile && <br />} 
               and <span className='text-orange-500'>explore opportunities</span> for growth and development. 
               Let's embark on this exciting journey together!
             </motion.p>
@@ -35,7 +43,7 @@ const HeroSection: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.5, duration: 0.5 }}
-              className="flex justify-end"
+              className="flex justify-center md:justify-end" 
             >
               <Link href='/form'>
                 <motion.button
@@ -56,7 +64,7 @@ const HeroSection: React.FC = () => {
               animate={{ scale: 1 }}
               transition={{ delay: 1, duration: 0.5, type: 'spring', stiffness: 120 }}
             >
-                <Image src="logo.svg" alt="Logo" className="mx-auto" width={300} height={300}/>
+              <Image src="logo.svg" alt="Logo" className="mx-auto" width={300} height={300}/>
             </motion.div>
           </ParallaxTilt>
         </div>
@@ -66,3 +74,4 @@ const HeroSection: React.FC = () => {
 }
 
 export default HeroSection;
+
