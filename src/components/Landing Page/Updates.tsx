@@ -21,7 +21,7 @@ const Updates = ({ className }: { className: string }) => {
 
     return (
         <div ref={ref} className={`${className}`}>
-            <h1 className="text-4xl font-bold py-8 ml-5">Latest news</h1>
+            <h1 className="text-4xl font-bold text-[#2F3233] py-8 ml-5">Latest news</h1>
 
             <div className="flex flex-col lg:flex-row gap-4 ml-5">
                 {/* LARGE NEWS (1) */}
@@ -161,7 +161,7 @@ const Updates = ({ className }: { className: string }) => {
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="self-end mt-10 mr-4 mb-4 lg:mr-10 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-md"
+                        className="self-end mr-4 mb-10 lg:mr-10 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-md"
                     >
                         <Link href='/events'>
                             Read More

@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Timeline } from 'antd';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import Dots from '../decorations/dots';
 
 const timelineData = [
   {
@@ -48,30 +49,38 @@ const History = () => {
   }, [controls, inView]);
 
   return (
-    <motion.div
-      className="mx-auto max-w-4xl px-4"
-      ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={controls}
-    >
-      <h1 className="text-5xl text-center font-bold mb-8">History</h1>
-      <Timeline mode="alternate">
-        {timelineData.map((item, index) => (
-          <Timeline.Item
-            key={index}
-            label={<span className="font-bold">{item.year}</span>}
-            color="orange"
-          >
-            <div className="flex justify-between items-start">
-              <div className="flex-1 mr-4">
-                <h3 className="text-lg font-semibold">{item.title}</h3>
-                <p className="text-lg">{item.description}</p>
+    <div className="relative">
+      <div className="absolute right-20 top-[90px] z-[-1]">
+          <Dots h="200" w="200" />
+      </div>
+      <div className="absolute left-20 bottom-[90px] z-[-1]">
+          <Dots h="200" w="200" />
+      </div>
+      <motion.div
+        className="mx-auto max-w-4xl px-4"
+        ref={ref}
+        initial={{ opacity: 0, y: 40 }}
+        animate={controls}
+      >
+        <h1 className="text-5xl text-[#2F3233] text-center font-bold mb-8">History</h1>
+        <Timeline mode="alternate">
+          {timelineData.map((item, index) => (
+            <Timeline.Item
+              key={index}
+              label={<span className="font-bold text-lg">{item.year}</span>}
+              color="orange"
+            >
+              <div className="flex justify-between items-start">
+                <div className="flex-1 mr-4">
+                  <h3 className="text-lg font-black text-orange-500">{item.title}</h3>
+                  <p className="text-lg font-semibold">{item.description}</p>
+                </div>
               </div>
-            </div>
-          </Timeline.Item>
-        ))}
-      </Timeline>
-    </motion.div>
+            </Timeline.Item>
+          ))}
+        </Timeline>
+      </motion.div>
+    </div>
   );
 };
 

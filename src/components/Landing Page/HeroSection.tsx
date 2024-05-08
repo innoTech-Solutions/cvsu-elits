@@ -21,7 +21,7 @@ const HeroSection = () => {
               initial={{ x: -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.5, duration: 1, type: 'spring', stiffness: 120 }}
-              className={`mb-4 text-2xl font-bold leading-tight text-center md:text-left md:text-6xl font-bold ${isMobile ? 'text-4xl' : ''}`}
+              className={`mb-4 text-2xl font-bold leading-tight text-center md:text-left md:text-6xl text-[#2F3233] ${isMobile ? 'text-4xl' : ''}`}
             >
               Welcome <span className='text-orange-500'>Tigreans!</span>
             </motion.h1>

@@ -9,7 +9,6 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 
-
 const Awards = () => {
   const awardsData = [
     {
@@ -62,8 +61,8 @@ const Awards = () => {
   }, []);
 
   return (
-    <div ref={ref} className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-      <h1 className="text-5xl font-bold mb-10">Awards</h1>
+    <div ref={ref} className="min-h-screen flex flex-col items-center justify-center bg-gray-100 relative">
+      <h1 className="text-5xl font-bold mb-10 text-[#2F3233]">Top Awards</h1>
       <div className={`grid grid-cols-1 ${isMobile ? 'sm:grid-cols-2' : 'md:grid-cols-2 lg:grid-cols-3'} gap-4 mx-12`}>
         {awardsData.map((award, index) => (
           <motion.div
