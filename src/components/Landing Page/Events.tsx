@@ -1,4 +1,6 @@
-import React from "react";
+"use client"
+import React, { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 import {
     Carousel,
     CarouselContent,
@@ -8,189 +10,42 @@ import {
 } from "../ui/carousel";
 import { Calendar, MapPin } from "lucide-react";
 import { Badge } from "../ui/badge";
-
-type UpcomingEvents = {
-    title: string;
-    description: string;
-    img: string[];
-    when: string;
-    where: string;
-    category: string;
-};
-
-const upcomingEvents: UpcomingEvents[] = [
-    {
-        title: "UGames upcoming in CvSU!",
-        description: "It is going to be the largest event ever!",
-        img: ["http://unsplash.it/800/600?random&gravity=center"],
-        when: new Date(Date.now()).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-        }),
-        where: "CvSU Main Campus",
-        category: "Sports",
-    },
-    {
-        title: "Tech Conference",
-        description: "Join us for a day of tech talks and networking.",
-        img: ["http://unsplash.it/800/600?random&gravity=center"],
-
-        when: new Date(Date.now()).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-        }),
-
-        where: "Tech Center",
-        category: "Technology",
-    },
-    {
-        title: "Art Exhibition",
-        description: "Experience the stunning artwork of local artists.",
-        img: ["http://unsplash.it/800/600?random&gravity=center"],
-
-        when: new Date(Date.now()).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-        }),
-
-        where: "Art Gallery",
-        category: "Arts & Music",
-    },
-    {
-        title: "Music Festival",
-        description: "Enjoy performances from your favorite artists.",
-        img: ["http://unsplash.it/800/600?random&gravity=center"],
-
-        when: new Date(Date.now()).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-        }),
-
-        where: "Music Park",
-        category: "Arts & Music",
-    },
-    {
-        title: "Food Fair",
-        description: "Taste delicious food from around the world.",
-        img: ["http://unsplash.it/800/600?random&gravity=center"],
-
-        when: new Date(Date.now()).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-        }),
-
-        where: "Food Court",
-        category: "Food",
-    },
-    {
-        title: "Book Fair",
-        description: "Discover new books and meet your favorite authors.",
-        img: ["http://unsplash.it/800/600?random&gravity=center"],
-
-        when: new Date(Date.now()).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-        }),
-
-        where: "Library",
-        category: "Arts & Music",
-    },
-    {
-        title: "Charity Run",
-        description: "Run for a good cause.",
-        img: ["http://unsplash.it/800/600?random&gravity=center"],
-
-        when: new Date(Date.now()).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-        }),
-
-        where: "City Park",
-        category: "Arts & Music",
-    },
-    {
-        title: "Film Festival",
-        description: "Watch the premieres of new films.",
-        img: ["http://unsplash.it/800/600?random&gravity=center"],
-
-        when: new Date(Date.now()).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-        }),
-
-        where: "Cinema",
-        category: "Arts & Music",
-    },
-    {
-        title: "Fashion Show",
-        description: "See the latest fashion trends.",
-        img: ["http://unsplash.it/800/600?random&gravity=center"],
-
-        when: new Date(Date.now()).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-        }),
-
-        where: "Fashion Center",
-        category: "Arts & Music",
-    },
-    {
-        title: "Science Fair",
-        description: "Explore exciting new scientific discoveries.",
-        img: ["http://unsplash.it/800/600?random&gravity=center"],
-
-        when: new Date(Date.now()).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-        }),
-
-        where: "Science Museum",
-        category: "Technology",
-    },
-    {
-        title: "Business Expo",
-        description: "Learn about new business opportunities.",
-        img: ["http://unsplash.it/800/600?random&gravity=center"],
-
-        when: new Date(Date.now()).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-        }),
-
-        where: "Expo Center",
-        category: "Technology",
-    },
-    {
-        title: "Health and Wellness Fair",
-        description: "Discover ways to improve your health and wellness.",
-        img: ["http://unsplash.it/800/600?random&gravity=center"],
-
-        when: new Date(Date.now()).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-        }),
-
-        where: "Health Center",
-        category: "Technology",
-    },
-];
+import { upcomingEvents } from "@/config/data";
+import { useInView } from "react-intersection-observer";
+import Link from "next/link";
 
 const Events = ({ className }: { className: string }) => {
+    const controls = useAnimation();
+    const { ref, inView } = useInView();
+
+    useEffect(() => {
+        if (inView) {
+            controls.start({ opacity: 1, y: 0 });
+        } else {
+            controls.start({ opacity: 0, y: 100 });
+        }
+    }, [controls, inView]);
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 100 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 1.5, // Increased duration for slower animation
+                delay: 0.2,
+            },
+        },
+    };
+
     return (
-        <div className={`${className}`}>
-            <div className="mx-10">
+        <div ref={ref} className={`${className} flex flex-col`}>
+            <motion.div
+                initial={{ opacity: 0, y: 100 }}
+                animate={controls}
+                transition={{ duration: 1.5, ease: "easeOut" }} // Increased duration for slower animation
+                className="mx-10"
+            >
                 <h1 className="text-4xl font-bold py-8">Upcoming Events</h1>
                 <Carousel
                     className="rounded-t-lg z-0"
@@ -209,21 +64,34 @@ const Events = ({ className }: { className: string }) => {
                                     className="pl-4 basis-1/2 lg:basis-1/3 xl:basis-1/4"
                                     key={i}
                                 >
-                                    <div className="relative">
+                                    <motion.div
+                                        variants={cardVariants}
+                                        initial="hidden"
+                                        animate="visible"
+                                        className="relative"
+                                    >
                                         <Badge
                                             variant={"secondary"}
                                             className="absolute top-2 right-2"
                                         >
                                             {event.category}
                                         </Badge>
-                                        <img
+                                        <motion.img
+                                            variants={cardVariants}
+                                            initial="hidden"
+                                            animate="visible"
                                             className="w-full h-64 object-cover rounded-t-xl"
                                             src={event.img[0]}
                                             alt={"Carousel Image" + i}
                                         />
-                                    </div>
+                                    </motion.div>
 
-                                    <div className="rounded-t-2xl translate -translate-y-4 bg-white px-4 py-2">
+                                    <motion.div
+                                        variants={cardVariants}
+                                        initial="hidden"
+                                        animate="visible"
+                                        className="rounded-t-2xl translate -translate-y-4 bg-white px-4 py-2"
+                                    >
                                         <h2 className="text-lg font-bold">
                                             {event.title}
                                         </h2>
@@ -243,7 +111,7 @@ const Events = ({ className }: { className: string }) => {
                                             />
                                             {event.where}
                                         </p>
-                                    </div>
+                                    </motion.div>
                                 </CarouselItem>
                             ))
                         ) : (
@@ -256,9 +124,20 @@ const Events = ({ className }: { className: string }) => {
                         <CarouselNext size={"icon"} />
                     </div>
                 </Carousel>
-            </div>
+            </motion.div>
+                <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="self-end mt-10 mr-4 mb-4 lg:mr-10 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-md"
+                >
+                    <Link href='/events'>
+                        View More Events
+                    </Link>
+                </motion.button>
         </div>
     );
 };
 
 export default Events;
+
+

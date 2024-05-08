@@ -1,89 +1,77 @@
 "use client"
-import React, { useState, useEffect } from 'react';
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { ParallaxTilt } from '../decorations/tilt';
+import Image from 'next/image';
+import Link from 'next/link';
 
+const HeroSection = () => {
+  let isMobile = false; 
 
-{/**
-
-  More come to improve with the parallax effect of this component
-*/}
-
-interface HeroSectionProps {}
-
-const HeroSection: React.FC<HeroSectionProps> = () => {
-  const [lineWidth, setLineWidth] = useState<number | string>(0);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-  const scrollY = useMotionValue(0);
-
-  useEffect(() => {
-    function handleResize() {
-      setIsMobile(window.innerWidth <= 768); // Adjust 768 to your desired mobile breakpoint
-    }
-
-    handleResize(); // Initial check
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
-    const updateScrollY = () => {
-      scrollY.set(window.scrollY);
-    };
-
-    window.addEventListener('scroll', updateScrollY);
-    return () => window.removeEventListener('scroll', updateScrollY);
-  }, []);
-
-  const backgroundY = useTransform(scrollY, [0, 200], [0, -200]);
-
-  const handleMouseEnter = () => {
-    setLineWidth('100%');
-  };
-
-  const handleMouseLeave = () => {
-    setLineWidth(0);
-  };
+  if (typeof window !== 'undefined') {
+    isMobile = window.innerWidth < 768; 
+  }
 
   return (
     <div className="relative">
-      <motion.div className="h-screen bg-cover bg-center" style={{backgroundImage: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/cvsu.jpg')", y: backgroundY}}>
-        {!isMobile && (
-          <div className="absolute top-0 right-10 bg-[#2F3233] w-36 h-48 flex items-center justify-center">
-            <img src="logo.svg" alt="Logo" className="w-20 mt-10" />
+      <div className="absolute inset-0 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)]"/>
+      <div className="relative z-10 flex flex-col md:flex-row items-center justify-center min-h-screen px-6 py-12 text-gray-900">
+        <div className="md:w-1/2">
+          <div className="container mx-auto">
+            <motion.h1
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 1, type: 'spring', stiffness: 120 }}
+              className={`mb-4 text-2xl font-bold leading-tight text-center md:text-left md:text-6xl font-bold ${isMobile ? 'text-4xl' : ''}`}
+            >
+              Welcome <span className='text-orange-500'>Tigreans!</span>
+            </motion.h1>
+            <motion.p
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 1, duration: 1, type: 'spring', stiffness: 120 }}
+              className={`mb-8 text-lg text-center md:text-left md:text-xl font-mono ${isMobile ? 'text-md leading-normal' : ''}`}
+            >
+              Welcome to our <b>school organization's online platform!</b><br/>
+              Here, you can stay updated with our <span className='text-orange-500'>latest events</span>,
+              {!isMobile && <br />} 
+              <span className='text-orange-500'>connect with fellow members</span>, 
+              {!isMobile && <br />} 
+              and <span className='text-orange-500'>explore opportunities</span> for growth and development. 
+              Let's embark on this exciting journey together!
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.5, duration: 0.5 }}
+              className="flex justify-center md:justify-end" 
+            >
+              <Link href='/form'>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-3 text-lg font-semibold text-white transition-all duration-300 bg-orange-500 rounded-md shadow-lg hover:bg-orange-600 focus:outline-none focus:ring focus:ring-blue-300"
+                >
+                  Make Account
+                </motion.button>
+              </Link>
+            </motion.div>
           </div>
-        )}
-        <div className="absolute bottom-0 left-0 bg-orange-500 h-1" style={{ width: lineWidth, transition: 'width 0.3s' }}></div>
-      </motion.div>
-      {!isMobile ? (
-        <div className="absolute top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-transparent backdrop-blur-sm p-20 rounded-md z-20 w-1/2" style={{ left: '35%'}}>
-          <h1 className="text-4xl font-bold mb-4 text-white">Welcome 
-            <span className="text-orange-500"> Tigreans!</span>
-          </h1>
-          <p className="text-lg mb-4 text-white">Welcome to our school organization's online platform! 
-                                      Here, you can stay updated with our latest events, 
-                                      connect with fellow members, and explore opportunities for growth and development. 
-                                      Let's embark on this exciting journey together!</p>
-          <button className="bg-orange-500 hover:bg-orange-700 transition duration-100 text-white font-bold py-2 px-6 rounded relative" 
-            onMouseEnter={handleMouseEnter} 
-            onMouseLeave={handleMouseLeave}
-            style={{ borderBottom: `2px solid orange`, marginBottom: `-2px` }}>
-            Make Account
-          </button>
         </div>
-      ) : (
-        <div className="absolute inset-0 flex items-center justify-center bg-transparent backdrop-blur-sm p-6">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4 text-white">Welcome <span className="text-orange-500">Tigreans!</span></h1>
-            <p className="text-lg mb-4 text-white">Welcome to our school organization's online platform! Here, you can stay updated with our latest events, connect with fellow members, and explore opportunities for growth and development. Let's embark on this exciting journey together!</p>
-            <button className="bg-orange-500 hover:bg-orange-700 transition duration-100 text-white font-bold py-2 px-6 rounded">
-              Make Account
-            </button>
-          </div>
+        <div className="hidden md:block md:w-1/2">
+          <ParallaxTilt className="cursor-pointer">
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 1, duration: 0.5, type: 'spring', stiffness: 120 }}
+            >
+              <Image src="logo.svg" alt="Logo" className="mx-auto" width={300} height={300}/>
+            </motion.div>
+          </ParallaxTilt>
         </div>
-      )}
+      </div>
     </div>
   );
-};
+}
 
 export default HeroSection;
 

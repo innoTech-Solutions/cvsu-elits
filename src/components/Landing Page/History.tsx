@@ -1,61 +1,86 @@
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
+"use client"
+import { useEffect } from 'react';
+import { Timeline } from 'antd';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
-const History: React.FC = () => {
+const timelineData = [
+  {
+    year: '2005',
+    title: 'Pioneering Education',
+    description: 'Founded the Tech School Organization with a vision to provide cutting-edge education in technology fields.',
+  },
+  {
+    year: '2008',
+    title: 'Innovative Curriculum',
+    description: 'Launched a revolutionary curriculum integrating practical, hands-on learning with theoretical knowledge.',
+  },
+  {
+    year: '2012',
+    title: 'Industry Partnerships',
+    description: 'Established strategic partnerships with leading tech companies to offer students internships and job placements.',
+  },
+  {
+    year: '2018',
+    title: 'Continued Growth',
+    description: 'Expanded campus facilities and online learning resources to accommodate a growing student population.',
+  },
+];
+
+const History = () => {
+  const { ref, inView } = useInView({ triggerOnce: false });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.5 },
+      });
+    } else {
+      controls.start({
+        opacity: 0,
+        y: 40,
+        transition: { duration: 0.5 },
+      });
+    }
+  }, [controls, inView]);
+
   return (
-    <div className="space-y-14 mb-48">
-      <h1 className="text-5xl font-bold text-center text-black">Our History</h1>
-      <div className="flex items-center justify-between mx-36">
-        <HoverCard>
-            <HoverCardTrigger>
-                <div className="rounded-full px-4 antialiased bg-black cursor-pointer transition-colors hover:bg-orange-500 flex items-center justify-center p-2">
-                    <span className="text-white text-lg">Introduction</span>
-                </div>
-            </HoverCardTrigger>
-            <HoverCardContent>
-                Our organization&apos;s journey began with a vision to revolutionize the industry. <br/>
-                We aimed to redefine standards and pave the way for innovation and excellence.
-            </HoverCardContent>
-        </HoverCard>
-        <div className="flex-1 h-0.5 bg-orange-500"></div>
-        <HoverCard>
-          <HoverCardTrigger>
-            <div className="rounded-full px-4 antialiased bg-black cursor-pointer transition-colors hover:bg-orange-500 flex items-center justify-center p-2">
-              <span className="text-white text-lg">Founding</span>
+    <motion.div
+      className="mx-auto max-w-4xl px-4"
+      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      animate={controls}
+    >
+      <h1 className="text-5xl text-center font-bold mb-8">History</h1>
+      <Timeline mode="alternate">
+        {timelineData.map((item, index) => (
+          <Timeline.Item
+            key={index}
+            label={<span className="font-bold">{item.year}</span>}
+            color="orange"
+          >
+            <div className="flex justify-between items-start">
+              <div className="flex-1 mr-4">
+                <h3 className="text-lg font-semibold">{item.title}</h3>
+                <p className="text-lg">{item.description}</p>
+              </div>
             </div>
-          </HoverCardTrigger>
-          <HoverCardContent>
-            Founded on the principles of integrity and passion, our organization started as a small team with a big dream. <br/>
-            We overcame challenges and worked tirelessly to turn our vision into reality.
-          </HoverCardContent>
-        </HoverCard>
-        <div className="flex-1 h-0.5 bg-orange-500"></div>
-        <HoverCard>
-          <HoverCardTrigger>
-            <div className="rounded-full px-4 antialiased bg-black cursor-pointer transition-colors hover:bg-orange-500 flex items-center justify-center p-2">
-              <span className="text-white text-lg">Milestones and Achievements</span>
-            </div>
-          </HoverCardTrigger>
-          <HoverCardContent>
-            Over the years, we have achieved numerous milestones that have shaped our identity. <br/>
-            From groundbreaking projects to industry recognition, each achievement has been a testament to our dedication and hard work.
-          </HoverCardContent>
-        </HoverCard>
-        <div className="flex-1 h-0.5 bg-orange-500"></div>
-        <HoverCard>
-          <HoverCardTrigger>
-            <div className="rounded-full px-4 antialiased bg-black cursor-pointer transition-colors hover:bg-orange-500 flex items-center justify-center p-2">
-              <span className="text-white text-lg">Impact</span>
-            </div>
-          </HoverCardTrigger>
-          <HoverCardContent>
-            Our impact extends beyond our organization. <br/>
-            We have contributed to the community, empowered individuals, and inspired change. <br/>
-            Our journey is a testament to the positive influence we strive to have on the world.
-          </HoverCardContent>
-        </HoverCard>
-      </div>
-    </div>
+          </Timeline.Item>
+        ))}
+      </Timeline>
+    </motion.div>
   );
 };
 
 export default History;
+
+
+
+
+
+
+
+
