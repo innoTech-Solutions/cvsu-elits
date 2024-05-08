@@ -16,7 +16,7 @@ const Shop = () => {
   }, []); 
 
   return (
-    <>
+    <div className="max-w-7xl mx-auto">
       <Toaster />
       <div className="p-4">
         <motion.h1
@@ -45,34 +45,38 @@ const Shop = () => {
           {/* Gold Membership */}
           
             <MembershipCard
-              type="Free Membership"
+            className='h-[500px]'
+              membershipType="Free Membership"
               perks={['Monthly newsletters']}
-              eventDiscounts="No discounts"
               price="Free"
               accessToResources={['Basic online courses']}
+              headerTextColor='text-orange-500'
             />
 
             <MembershipCard
-              type="Silver Membership"
+            className='h-[600px]'
+              membershipType="Silver Membership"
               perks={['Access to select events', 'Quarterly newsletters']}
-              eventDiscounts="Up to 30% off"
               price="$49/year"
               accessToResources={['Basic online courses', 'Access to forums']}
-              backgroundColor="bg-[#ACACAB]"
+              headerBackgroundColor='bg-gray-500'
+              headerTextColor='text-gray-500'
             />
 
             <MembershipCard
-              type="Gold Membership"
-              perks={['Exclusive access to events', 'Monthly newsletters', 'Discounts at partner stores']}
-              eventDiscounts="Up to 50% off"
+            className='h-[500px]'
+              membershipType="Gold Membership"
               price="$99/year"
+              priceDescription='for the first year'
+              perks={['Exclusive access to events', 'Monthly newsletters', 'Discounts at partner stores']}
               accessToResources={['Online courses', 'Member-only forums', 'Networking events']}
-              backgroundColor="bg-[#FFEE51]"
+              headerBackgroundColor='bg-yellow-500'
+              headerTextColor='text-yellow-500'
             />
 
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

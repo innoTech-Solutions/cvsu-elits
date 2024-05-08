@@ -2,24 +2,24 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/h
 
 const History: React.FC = () => {
   return (
-    <>
-      <h1 className="text-5xl font-bold text-center text-black mt-10">Our History</h1>
-      <div className="flex items-center justify-between mx-36 h-80">
+    <div className="space-y-14 mb-48">
+      <h1 className="text-5xl font-bold text-center text-black">Our History</h1>
+      <div className="flex items-center justify-between mx-36">
         <HoverCard>
-          <HoverCardTrigger>
-            <div className="rounded-full bg-black cursor-pointer transition-colors hover:bg-orange-500 flex items-center justify-center p-2">
-              <span className="text-white text-lg">Introduction</span>
-            </div>
-          </HoverCardTrigger>
-          <HoverCardContent>
-            Our organization's journey began with a vision to revolutionize the industry. <br/>
-            We aimed to redefine standards and pave the way for innovation and excellence.
-          </HoverCardContent>
+            <HoverCardTrigger>
+                <div className="rounded-full px-4 antialiased bg-black cursor-pointer transition-colors hover:bg-orange-500 flex items-center justify-center p-2">
+                    <span className="text-white text-lg">Introduction</span>
+                </div>
+            </HoverCardTrigger>
+            <HoverCardContent>
+                Our organization&apos;s journey began with a vision to revolutionize the industry. <br/>
+                We aimed to redefine standards and pave the way for innovation and excellence.
+            </HoverCardContent>
         </HoverCard>
         <div className="flex-1 h-0.5 bg-orange-500"></div>
         <HoverCard>
           <HoverCardTrigger>
-            <div className="rounded-full bg-black cursor-pointer transition-colors hover:bg-orange-500 flex items-center justify-center p-2">
+            <div className="rounded-full px-4 antialiased bg-black cursor-pointer transition-colors hover:bg-orange-500 flex items-center justify-center p-2">
               <span className="text-white text-lg">Founding</span>
             </div>
           </HoverCardTrigger>
@@ -31,7 +31,7 @@ const History: React.FC = () => {
         <div className="flex-1 h-0.5 bg-orange-500"></div>
         <HoverCard>
           <HoverCardTrigger>
-            <div className="rounded-full bg-black cursor-pointer transition-colors hover:bg-orange-500 flex items-center justify-center p-2">
+            <div className="rounded-full px-4 antialiased bg-black cursor-pointer transition-colors hover:bg-orange-500 flex items-center justify-center p-2">
               <span className="text-white text-lg">Milestones and Achievements</span>
             </div>
           </HoverCardTrigger>
@@ -43,7 +43,7 @@ const History: React.FC = () => {
         <div className="flex-1 h-0.5 bg-orange-500"></div>
         <HoverCard>
           <HoverCardTrigger>
-            <div className="rounded-full bg-black cursor-pointer transition-colors hover:bg-orange-500 flex items-center justify-center p-2">
+            <div className="rounded-full px-4 antialiased bg-black cursor-pointer transition-colors hover:bg-orange-500 flex items-center justify-center p-2">
               <span className="text-white text-lg">Impact</span>
             </div>
           </HoverCardTrigger>
@@ -54,7 +54,7 @@ const History: React.FC = () => {
           </HoverCardContent>
         </HoverCard>
       </div>
-    </>
+    </div>
   );
 };
 
