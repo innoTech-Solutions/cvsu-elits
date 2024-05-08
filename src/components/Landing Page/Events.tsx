@@ -83,12 +83,12 @@ const Events = ({ className }: { className: string }) => {
                                                     variants={cardVariants}
                                                     initial="hidden"
                                                     animate="visible"
-                                                    className="w-full h-full object-cover rounded-t-xl"
+                                                    className="w-full object-cover rounded-t-xl"
                                                     src={event.img[0]}
                                                     alt={"Carousel Image" + i}
                                                 />
                                             </CardHeader>
-                                            <CardContent className="h-32">
+                                            <CardContent className="h-[100px]">
                                                 <CardTitle>{event.title}</CardTitle>
                                                 <CardDescription>
                                                     <p className="flex flex-row">

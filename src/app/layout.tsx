@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat as Inter } from "next/font/google";
 import "./globals.css";
-import NavigationWithSidebar from "@/components/Navigation/NavigationWithSidebar";
+import NavigationWithSidebar from "@/components/Navigation/Navigation";
 import Footer from "@/components/Footer/Footer";
 
 

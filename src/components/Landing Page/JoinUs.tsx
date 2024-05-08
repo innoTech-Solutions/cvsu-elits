@@ -43,7 +43,6 @@ const JoinUs = ({ className }: { className: string }) => {
                                 </div>
                             </div>
                             <div className="my-4 w-full">
-                                <h3 className="text-2xl font-medium text-gray-200">{job.title}</h3>
                                 <div className="text-sm font-medium">
                                     <ul className="list-disc list-inside">
                                         {job.requirements.map((requirement, index) => (

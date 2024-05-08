@@ -43,24 +43,24 @@ const Sidebar = () => {
                         style={{ scaleY: scaleY }}
                     />
 
-                    <div className="flex-col gap-10 -my-2 h-full flex">
+                    <div className="flex-col gap-10 -my-2 h-full flex bg-[#2F3233] text-white bg-opacity-60 backdrop-blur-md p-3 rounded-lg">
                         <LinkComponent href={"#hero"} text={"Home"}>
                             <div className="w-4 -translate-x-full font-semibold" />
                         </LinkComponent>
                         <LinkComponent
-                            href={"#historical_background"}
+                            href={"#history"}
                             text={"History"}
                         >
-                            <div className="w-4 border-t border-black -translate-x-full" />
+                            <div className="w-4 -translate-x-full" />
                         </LinkComponent>
                         <LinkComponent href={"#awards"} text={"Awards"}>
-                            <div className="w-4 border-t border-black -translate-x-full" />
+                            <div className="w-4 -translate-x-full" />
                         </LinkComponent>
-                        <LinkComponent href={"#news"} text={"News"}>
-                            <div className="w-4 border-t border-black -translate-x-full" />
+                        <LinkComponent href={"#updates"} text={"News"}>
+                            <div className="w-4 -translate-x-full" />
                         </LinkComponent>
                         <LinkComponent href={"#events"} text={"Events"}>
-                            <div className="w-4 border-t border-black -translate-x-full" />
+                            <div className="w-4 -translate-x-full" />
                         </LinkComponent>
                         <LinkComponent href={"#joinus"} text={"Join us"}>
                             <div className="w-4 -translate-x-full" />
