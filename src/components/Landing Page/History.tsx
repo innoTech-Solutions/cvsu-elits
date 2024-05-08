@@ -1,106 +1,86 @@
 "use client"
-import { useState } from 'react';
-import Dots from '../decorations/dots';
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
+import { useEffect } from 'react';
+import { Timeline } from 'antd';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
-const History: React.FC = () => {
-  const [hoveredCircle, setHoveredCircle] = useState(-1);
+const timelineData = [
+  {
+    year: '2005',
+    title: 'Pioneering Education',
+    description: 'Founded the Tech School Organization with a vision to provide cutting-edge education in technology fields.',
+  },
+  {
+    year: '2008',
+    title: 'Innovative Curriculum',
+    description: 'Launched a revolutionary curriculum integrating practical, hands-on learning with theoretical knowledge.',
+  },
+  {
+    year: '2012',
+    title: 'Industry Partnerships',
+    description: 'Established strategic partnerships with leading tech companies to offer students internships and job placements.',
+  },
+  {
+    year: '2018',
+    title: 'Continued Growth',
+    description: 'Expanded campus facilities and online learning resources to accommodate a growing student population.',
+  },
+];
 
-  const handleCircleHover = (index: number) => {
-    setHoveredCircle(index);
-  };
+const History = () => {
+  const { ref, inView } = useInView({ triggerOnce: false });
+  const controls = useAnimation();
 
-  const handleCircleLeave = () => {
-    setHoveredCircle(-1);
-  };
+  useEffect(() => {
+    if (inView) {
+      controls.start({
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.5 },
+      });
+    } else {
+      controls.start({
+        opacity: 0,
+        y: 40,
+        transition: { duration: 0.5 },
+      });
+    }
+  }, [controls, inView]);
 
   return (
-    <div className='relative'>
-      <h1 className="text-5xl font-bold text-center text-black mt-10">Our History</h1>
-      <div className="flex justify-between items-center mt-20 mx-20">
-        <HoverCard>
-          <HoverCardTrigger>
-            <div
-              className="w-10 h-10 rounded-full bg-black hover:bg-orange-600 cursor-pointer transition-all duration-500 relative"
-              onMouseEnter={() => handleCircleHover(0)}
-              onMouseLeave={handleCircleLeave}
-            >
-              <span className="absolute top-full text-lg font-semibold text-center w-full overflow-hidden whitespace-nowrap">2005</span>
+    <motion.div
+      className="mx-auto max-w-4xl px-4"
+      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      animate={controls}
+    >
+      <h1 className="text-5xl text-center font-bold mb-8">History</h1>
+      <Timeline mode="alternate">
+        {timelineData.map((item, index) => (
+          <Timeline.Item
+            key={index}
+            label={<span className="font-bold">{item.year}</span>}
+            color="orange"
+          >
+            <div className="flex justify-between items-start">
+              <div className="flex-1 mr-4">
+                <h3 className="text-lg font-semibold">{item.title}</h3>
+                <p className="text-lg">{item.description}</p>
+              </div>
             </div>
-          </HoverCardTrigger>
-          <HoverCardContent className="mx-10">
-            <h2 className="text-xl font-bold mb-2">Pioneering Education</h2>
-            <p>Founded the Tech School Organization with a vision to provide cutting-edge education in technology fields.</p>
-          </HoverCardContent>
-        </HoverCard>
-        <div
-          className={`h-1 flex-grow transition-all duration-500 ${hoveredCircle >= 1 ? 'bg-orange-600' : 'bg-black'}`}
-        ></div>
-        <HoverCard>
-          <HoverCardTrigger>
-            <div
-              className="w-10 h-10 rounded-full bg-black hover:bg-orange-600 cursor-pointer transition-all duration-500 relative"
-              onMouseEnter={() => handleCircleHover(1)}
-              onMouseLeave={handleCircleLeave}
-            >
-              <span className="absolute top-full text-lg font-semibold text-center w-full overflow-hidden whitespace-nowrap">2008</span>
-            </div>
-          </HoverCardTrigger>
-          <HoverCardContent className="mx-10">
-            <h2 className="text-xl font-bold mb-2">Innovative Curriculum</h2>
-            <p>Launched a revolutionary curriculum integrating practical, hands-on learning with theoretical knowledge.</p>
-          </HoverCardContent>
-        </HoverCard>
-        <div
-          className={`h-1 flex-grow transition-all duration-500 ${hoveredCircle >= 2 ? 'bg-orange-600' : 'bg-black'}`}
-        ></div>
-        <HoverCard>
-          <HoverCardTrigger>
-            <div
-              className="w-10 h-10 rounded-full bg-black hover:bg-orange-600 cursor-pointer transition-all duration-500 relative"
-              onMouseEnter={() => handleCircleHover(2)}
-              onMouseLeave={handleCircleLeave}
-            >
-              <span className="absolute top-full text-lg font-semibold text-center w-full overflow-hidden whitespace-nowrap">2012</span>
-            </div>
-          </HoverCardTrigger>
-          <HoverCardContent className="mx-10">
-            <h2 className="text-xl font-bold mb-2">Industry Partnerships</h2>
-            <p>Established strategic partnerships with leading tech companies to offer students internships and job placements.</p>
-          </HoverCardContent>
-        </HoverCard>
-        <div
-          className={`h-1 flex-grow transition-all duration-500 ${hoveredCircle >= 3 ? 'bg-orange-600' : 'bg-black'}`}
-        ></div>
-        <HoverCard>
-          <HoverCardTrigger>
-            <div
-              className="w-10 h-10 rounded-full bg-black hover:bg-orange-600 cursor-pointer transition-all duration-500 relative"
-              onMouseEnter={() => handleCircleHover(3)}
-              onMouseLeave={handleCircleLeave}
-            >
-              <span className="absolute top-full text-lg font-semibold text-center w-full overflow-hidden whitespace-nowrap">2018</span>
-            </div>
-          </HoverCardTrigger>
-          <HoverCardContent className="mx-10">
-            <h2 className="text-xl font-bold mb-2">Continued Growth</h2>
-            <p>Expanded campus facilities and online learning resources to accommodate a growing student population.</p>
-          </HoverCardContent>
-        </HoverCard>
-      </div>
-      <div className="absolute right-0 top-[90px] z-[-1]">
-        <Dots h="107" w="134" />
-      </div>
-      <div className="absolute -bottom-7 left-0 z-[-1]">
-        <Dots h="70" w="134" />
-      </div>
-      <div className="absolute left-[350px] top-0 z-[-1]">
-        <Dots h="70" w="134" />
-      </div>
-    </div>
+          </Timeline.Item>
+        ))}
+      </Timeline>
+    </motion.div>
   );
 };
 
 export default History;
+
+
+
+
+
+
 
 
