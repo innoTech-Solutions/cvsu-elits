@@ -5,8 +5,9 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { newsAndUpdates } from "@/config/data";
 import { useInView } from "react-intersection-observer";
+import { Badge } from "../ui/badge";
 
-const Updates = ({ className }: { className: string }) => {
+const News = ({ className }: { className: string }) => {
     
     const controls = useAnimation();
     const { ref, inView } = useInView();
@@ -36,20 +37,27 @@ const Updates = ({ className }: { className: string }) => {
                     />
 
                     <div className="flex flex-row gap-2 pt-2">
-                        <motion.p
-                            initial={{ opacity: 0, x: -100 }}
-                            animate={controls}
-                            transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
-                        >
-                            {newsAndUpdates[0].authorName} {" "}
-                            {new Date(
-                                newsAndUpdates[0].datePosted
-                            ).toLocaleDateString("en-US", {
-                                year: "numeric",
-                                month: "2-digit",
-                                day: "2-digit",
-                            })}
-                        </motion.p>
+                            <motion.p
+                                initial={{ opacity: 0, x: -100 }}
+                                animate={controls}
+                                transition={{
+                                    duration: 1,
+                                    delay: 0.7,
+                                    ease: "easeOut",
+                                }}
+                                className="text-sm font-bold text-gray-500 gap-2 flex flex-row items-center "
+                            >
+                                <Badge>
+                                    {new Date(
+                                        newsAndUpdates[0].datePosted
+                                    ).toLocaleDateString("en-US", {
+                                        year: "numeric",
+                                        month: "2-digit",
+                                        day: "2-digit",
+                                    })}
+                                </Badge>
+                                {newsAndUpdates[0].authorName}
+                            </motion.p>
                     </div>
 
                     <motion.h2
@@ -89,12 +97,18 @@ const Updates = ({ className }: { className: string }) => {
                             />
 
                             <div className="lg:mx-4 flex flex-col overflow-hidden">
-                                <motion.p
-                                    initial={{ opacity: 0, x: 100 }}
-                                    animate={controls}
-                                    transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
-                                >
-                                    {newsAndUpdates[0].authorName} •{" "}
+
+                            <motion.p
+                                initial={{ opacity: 0, x: -100 }}
+                                animate={controls}
+                                transition={{
+                                    duration: 1,
+                                    delay: 0.7,
+                                    ease: "easeOut",
+                                }}
+                                className="text-sm font-bold text-gray-500 gap-2 flex flex-row items-center my-2"
+                            >
+                                <Badge>
                                     {new Date(
                                         newsAndUpdates[0].datePosted
                                     ).toLocaleDateString("en-US", {
@@ -102,7 +116,9 @@ const Updates = ({ className }: { className: string }) => {
                                         month: "2-digit",
                                         day: "2-digit",
                                     })}
-                                </motion.p>
+                                </Badge>
+                                {newsAndUpdates[0].authorName}
+                            </motion.p>
                                 <motion.h2
                                     initial={{ opacity: 0, x: 100 }}
                                     animate={controls}
@@ -171,7 +187,7 @@ const Updates = ({ className }: { className: string }) => {
     );
 };
 
-export default Updates;
+export default News;
 
 
 

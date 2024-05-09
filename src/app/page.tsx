@@ -7,7 +7,7 @@ import Events from "@/components/Landing Page/Events";
 import HeroSection from "@/components/Landing Page/HeroSection";
 import History from "@/components/Landing Page/History";
 import JoinUs from "@/components/Landing Page/JoinUs";
-import Updates from "@/components/Landing Page/Updates";
+import Updates from "@/components/Landing Page/News";
 import Sidebar from "@/components/Sidebar";
 import Link from "next/link";
 
