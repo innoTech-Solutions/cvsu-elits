@@ -62,7 +62,7 @@ const Events = ({ className }: { className: string }) => {
                         {upcomingEvents ? (
                             upcomingEvents.map((event, i) => (
                                 <CarouselItem
-                                    className="pl-4 h-96 lg:basis-1/3 xl:basis-1/4"
+                                    className="pl-4 lg:basis-1/3 xl:basis-1/4"
                                     key={i}
                                 >
                                     <motion.div
@@ -83,13 +83,13 @@ const Events = ({ className }: { className: string }) => {
                                                     variants={cardVariants}
                                                     initial="hidden"
                                                     animate="visible"
-                                                    className="w-full object-cover rounded-t-xl"
+                                                    className="w-full object-cover rounded-xl"
                                                     src={event.img[0]}
                                                     alt={"Carousel Image" + i}
                                                 />
                                             </CardHeader>
-                                            <CardContent className="h-[100px]">
-                                                <CardTitle>{event.title}</CardTitle>
+                                            <CardContent className="h-[100px] gap-2">
+                                                <CardTitle className="text-lg">{event.title}</CardTitle>
                                                 <CardDescription>
                                                     <p className="flex flex-row">
                                                         <Calendar className="mr-2" size={16} />
