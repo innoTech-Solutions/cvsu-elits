@@ -88,7 +88,7 @@ const Updates = ({ className }: { className: string }) => {
                                 alt={`${news.title}.img`}
                             />
 
-                            <div className="lg:mx-4 flex flex-col overflow-hidden mb-4">
+                            <div className="lg:mx-4 flex flex-col overflow-hidden">
                                 <motion.p
                                     initial={{ opacity: 0, x: 100 }}
                                     animate={controls}
@@ -155,17 +155,15 @@ const Updates = ({ className }: { className: string }) => {
                 initial={{ opacity: 0, y: 50 }}
                 animate={controls}
                 transition={{ duration: 1, delay: 1.3, ease: "easeOut" }}
-                className="flex justify-end cursor-pointer mr-10"
+                className="flex justify-end cursor-pointer"
             >
                 <Link href='/news'>
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="self-end mr-4 mb-10 lg:mr-10 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-md"
+                        className="self-end mb-10 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-md"
                     >
-                        <Link href='/events'>
-                            Read More
-                        </Link>
+                        Read More
                     </motion.button>
                 </Link>
             </motion.div>

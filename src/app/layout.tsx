@@ -3,7 +3,7 @@ import { Montserrat as Inter } from "next/font/google";
 import "./globals.css";
 import NavigationWithSidebar from "@/components/Navigation/Navigation";
 import Footer from "@/components/Footer/Footer";
-
+import Navigation from "@/components/Navigation/Navigation";
 
 export const metadata: Metadata = {
     title: "CVSU Elits",
@@ -18,10 +18,12 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className="bg-gray-100">
+                <div className="flex flex-col fixed w-full z-50">
+                    <Navigation />
+                </div>
                 <main>
-                    <NavigationWithSidebar />
                     {children}
-                    <Footer/>
+                    <Footer />
                 </main>
             </body>
         </html>

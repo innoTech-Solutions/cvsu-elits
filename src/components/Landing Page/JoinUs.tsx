@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Pagination, PaginationContent, PaginationItem, PaginationNext, PaginationPrevious } from "../ui/pagination";
 import { jobPositions } from "@/config/data";
+import { Badge } from "../ui/badge";
 
 const JoinUs = ({ className }: { className: string }) => {
     const rowsPerPage = 3;
@@ -42,20 +43,19 @@ const JoinUs = ({ className }: { className: string }) => {
                                     <h3 className="text-xl font-bold text-gray-50">{job.position}</h3>
                                 </div>
                             </div>
+
                             <div className="my-4 w-full">
-                                <div className="text-sm font-medium">
-                                    <ul className="list-disc list-inside">
-                                        {job.requirements.map((requirement, index) => (
-                                            <li key={index} className="text-gray-500">{requirement}</li>
-                                        ))}
-                                    </ul>
+                                <div className="text-sm font-medium flex flex-row gap-2">
+                                    {job.requirements.map((requirement, index) => (
+                                        <Badge key={index} className="hover:bg-[#f18700] bg-[#f18700] text-white">{requirement}</Badge>
+                                    ))}
                                 </div>
                             </div>
                             <div className="flex justify-end w-full items-center">
                                 <button
                                     className="font-medium text-orange-500 transition-all duration-300 hover:text-orange-500/80"
                                 >
-                                    Join
+                                    Apply Now
                                 </button>
                             </div>
                         </div>
