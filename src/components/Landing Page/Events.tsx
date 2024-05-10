@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import {
     Carousel,
@@ -12,7 +12,6 @@ import { Calendar, MapPin } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { upcomingEvents } from "@/config/data";
 import { useInView } from "react-intersection-observer";
-import Link from "next/link";
 import {
     Card,
     CardContent,
