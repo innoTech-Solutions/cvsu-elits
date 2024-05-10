@@ -37,7 +37,7 @@ export default function Home() {
     }, []);
 
     return (
-        <div className="" onMouseMove={handleMouseMove}>
+        <div onMouseMove={handleMouseMove}>
             <AnimatePresence>
                 {showSidebar && (
                     <motion.div
@@ -54,7 +54,7 @@ export default function Home() {
             </AnimatePresence>
 
             {/* <div className="mx-16 md:mx-24 lg:mx-40"> */}
-            <div className="mx-16 md:mx-24 lg:mx-40">
+            <div className="mx-16 sm:mx-0 lg:mx-40">
                 <div id="hero">
                     <HeroSection />
                 </div>
