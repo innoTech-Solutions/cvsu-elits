@@ -13,11 +13,12 @@ import Link from "next/link";
 
 export default function Home() {
     const [showSidebar, setShowSidebar] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
     const sidebarRef = useRef(null);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     const handleMouseMove: MouseEventHandler<HTMLDivElement> = (e) => {
-        if (e.clientX <= 20) {
+        if (e.clientX <= 20 && !isMobile) {
             setShowSidebar(true);
             if (timeoutRef.current) {
                 clearTimeout(timeoutRef.current);
@@ -27,6 +28,26 @@ export default function Home() {
             }, 5000);
         }
     };
+
+    const handleSidebarIconClick = () => {
+        setShowSidebar(true);
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
+        timeoutRef.current = setTimeout(() => {
+            setShowSidebar(false);
+        }, 5000);
+    };
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768); 
+        };
+
+        handleResize(); 
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     useEffect(() => {
         return () => {
@@ -39,7 +60,7 @@ export default function Home() {
     return (
         <div onMouseMove={handleMouseMove}>
             <AnimatePresence>
-                {showSidebar && (
+                {!isMobile && showSidebar && (
                     <motion.div
                         ref={sidebarRef}
                         className="fixed left-0 z-50 top-1/2 transform -translate-y-1/2"
@@ -53,8 +74,16 @@ export default function Home() {
                 )}
             </AnimatePresence>
 
-            {/* <div className="mx-16 md:mx-24 lg:mx-40"> */}
-            <div className="mx-16 sm:mx-0 lg:mx-40">
+            {!showSidebar && !isMobile && (
+                <div
+                    className="fixed left-0 top-1/2 transform -translate-y-1/2 z-50 cursor-pointer ml-3 p-2 bg-gray-700 rounded-full text-white"
+                    onClick={handleSidebarIconClick}
+                >
+                    &gt;&gt;
+                </div>
+            )}
+
+            <div className="mx-12 sm:mx-0 lg:mx-40">
                 <div id="hero">
                     <HeroSection />
                 </div>
@@ -76,11 +105,11 @@ export default function Home() {
                         Upcoming Events
                     </h1>
                     <Events className="my-4" />
-                    <Link className="flex justify-end  mb-4" href={"/events"}>
+                    <Link className="flex justify-end mb-4" href={"/events"}>
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className=" bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-md"
+                            className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-md"
                         >
                             View all
                         </motion.button>

@@ -1,5 +1,5 @@
-"use client"
-import React, { useEffect } from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { Button } from "../ui/button";
 import Link from "next/link";
@@ -8,9 +8,24 @@ import { useInView } from "react-intersection-observer";
 import { Badge } from "../ui/badge";
 
 const News = ({ className }: { className: string }) => {
-    
+    const [isMobile, setIsMobile] = useState(false);
     const controls = useAnimation();
     const { ref, inView } = useInView();
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768); // Adjust this value based on your breakpoint
+        };
+
+        // Set initial value
+        handleResize();
+
+        // Add event listener
+        window.addEventListener("resize", handleResize);
+
+        // Remove event listener on cleanup
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     useEffect(() => {
         if (inView) {
@@ -81,7 +96,7 @@ const News = ({ className }: { className: string }) => {
                 {/* SMALL NEWS (3) */}
 
                 <div className="flex w-full flex-row lg:w-1/2 lg:flex-col gap-4">
-                    {newsAndUpdates.slice(1, 4).map((news, index) => (
+                    {newsAndUpdates.slice(1, isMobile ? 3 : 4).map((news, index) => (
                         <Link
                             href={""}
                             key={index}
@@ -110,14 +125,14 @@ const News = ({ className }: { className: string }) => {
                             >
                                 <Badge>
                                     {new Date(
-                                        newsAndUpdates[0].datePosted
+                                        news.datePosted
                                     ).toLocaleDateString("en-US", {
                                         year: "numeric",
                                         month: "2-digit",
                                         day: "2-digit",
                                     })}
                                 </Badge>
-                                {newsAndUpdates[0].authorName}
+                                {news.authorName}
                             </motion.p>
                                 <motion.h2
                                     initial={{ opacity: 0, x: 100 }}
@@ -188,6 +203,3 @@ const News = ({ className }: { className: string }) => {
 };
 
 export default News;
-
-
-
