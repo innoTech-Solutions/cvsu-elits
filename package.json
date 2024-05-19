@@ -27,6 +27,7 @@
     "react-intersection-observer": "^9.10.2",
     "react-parallax-tilt": "^1.7.225",
     "react-spring": "^9.7.3",
+    "react-stack-cards": "^1.0.8",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7"
   },

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import {
     Carousel,
@@ -23,6 +23,25 @@ import {
 const Events = ({ className }: { className: string }) => {
     const controls = useAnimation();
     const { ref, inView } = useInView();
+
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        // Set initial value
+        handleResize();
+
+        // Add event listener
+        window.addEventListener("resize", handleResize);
+
+        // Clean up event listener on component unmount
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
 
     useEffect(() => {
         if (inView) {
@@ -58,10 +77,12 @@ const Events = ({ className }: { className: string }) => {
                     align: "start",
                 }}
             >
-                <div className="lg:block hidden absolute right-0 transform -translate-y-12 z-20 mr-12">
-                    <CarouselPrevious size={"icon"} />
-                    <CarouselNext size={"icon"} />
-                </div>
+                {!isMobile && (
+                    <div className="absolute right-0 transform -translate-y-12 z-20 mr-12">
+                        <CarouselPrevious size={"icon"} />
+                        <CarouselNext size={"icon"} />
+                    </div>
+                )}
                 <CarouselContent className="-ml-4">
                     {upcomingEvents ? (
                         upcomingEvents.map((event, i) => (
@@ -122,10 +143,11 @@ const Events = ({ className }: { className: string }) => {
                     )}
                 </CarouselContent>
 
-                <div className="lg:hidden z-50">
-                    <CarouselPrevious size={"icon"} />
-                    <CarouselNext size={"icon"} />
-                </div>
+                {isMobile && (
+                    <div className="text-center mt-4 text-gray-500">
+                        Swipe through
+                    </div>
+                )}
             </Carousel>
         </motion.div>
     );
