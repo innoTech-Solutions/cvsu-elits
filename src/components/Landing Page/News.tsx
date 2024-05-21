@@ -1,9 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { Button } from "../ui/button";
 import Link from "next/link";
-import { newsAndUpdates } from "@/config/data";
+import { newsAndUpdates } from "@/config/newsData";
 import { useInView } from "react-intersection-observer";
 import { Badge } from "../ui/badge";
 
@@ -14,16 +13,12 @@ const News = ({ className }: { className: string }) => {
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768); // Adjust this value based on your breakpoint
+            setIsMobile(window.innerWidth <= 768);
         };
 
-        // Set initial value
         handleResize();
 
-        // Add event listener
         window.addEventListener("resize", handleResize);
-
-        // Remove event listener on cleanup
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 

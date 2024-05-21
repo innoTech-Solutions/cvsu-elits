@@ -10,7 +10,7 @@ import {
 } from "../ui/carousel";
 import { Calendar, MapPin } from "lucide-react";
 import { Badge } from "../ui/badge";
-import { upcomingEvents } from "@/config/data";
+import { upcomingEvents } from "@/config/eventsData";
 import { useInView } from "react-intersection-observer";
 import {
     Card,

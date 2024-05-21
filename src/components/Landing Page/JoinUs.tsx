@@ -1,8 +1,9 @@
 "use client"
 import React, { useState } from "react";
 import { Pagination, PaginationContent, PaginationItem, PaginationNext, PaginationPrevious } from "../ui/pagination";
-import { jobPositions } from "@/config/data";
+import { jobPositions } from "@/config/jobPositionData";
 import { Badge } from "../ui/badge";
+import { AnimatePresence, motion } from "framer-motion";
 
 const JoinUs = ({ className }: { className: string }) => {
     const rowsPerPage = 3;
@@ -28,38 +29,46 @@ const JoinUs = ({ className }: { className: string }) => {
                         we&apos;d love to have you on board.
                     </p>
                 </div>
-
+            
                 <div id="positions" className="flex flex-wrap justify-center items-center gap-4">
+                
                     {jobPositions.slice(startIndex, endIndex).map((job, index) => (
-                        <div key={index} className="w-96 h-60 overflow-hidden bg-[#2F3233] p-4 lg:p-8 flex flex-col justify-between items-center rounded-lg shadow-lg my-2">
-                            <div className="flex items-end mb-3 w-full">
-                            </div>
-                            <div className="flex items-center gap-x-2">
+                        <motion.div 
+                        key={job.id} 
+                        className="w-96 h-72 overflow-hidden bg-[#2F3233] p-4 lg:p-8 flex flex-col justify-between items-start rounded-lg shadow-lg my-2 text-white"
+                        initial={{ opacity : 0, y: -50}}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 50 }}
+                        transition={{ duration: 0.5 }}>
+                            <AnimatePresence>
+                            <div className="flex items-center gap-x-2 mb-4">
                                 <img
                                     className="w-16 h-16 object-cover"
                                     src="logo.svg" alt="Logo"
                                 />
                                 <div>
-                                    <h3 className="text-xl font-bold text-gray-50">{job.position}</h3>
+                                    <h3 className="text-xl font-bold">{job.position}</h3>
                                 </div>
                             </div>
 
                             <div className="my-4 w-full">
-                                <div className="text-sm font-medium flex flex-row gap-2">
+                                <div className="text-sm font-medium flex flex-row gap-2 flex-wrap">
                                     {job.requirements.map((requirement, index) => (
                                         <Badge key={index} className="hover:bg-[#f18700] bg-[#f18700] text-white">{requirement}</Badge>
                                     ))}
                                 </div>
                             </div>
-                            <div className="flex justify-end w-full items-center">
+                            <div className="flex justify-end w-full items-center mt-4">
                                 <button
-                                    className="font-medium text-orange-500 transition-all duration-300 hover:text-orange-500/80"
+                                    className="font-medium text-white bg-orange-500 transition-all duration-300 hover:bg-orange-500/80 px-4 py-2 rounded"
                                 >
                                     Apply Now
                                 </button>
                             </div>
-                        </div>
+                            </AnimatePresence>
+                        </motion.div>
                     ))}
+                
                 </div>
 
                 <Pagination>
@@ -98,5 +107,4 @@ const JoinUs = ({ className }: { className: string }) => {
     );
 };
 
-export default JoinUs;
-
+export default JoinUs;  

@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import Link from "next/link";
 import { useInView } from "react-intersection-observer";
-import { newsAndUpdates } from "@/config/data";
+import { newsAndUpdates } from "@/config/newsData";
 import { Badge } from "@/components/ui/badge";
 
 const News = () => {

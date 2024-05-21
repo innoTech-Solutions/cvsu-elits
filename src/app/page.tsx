@@ -10,6 +10,7 @@ import JoinUs from "@/components/Landing Page/JoinUs";
 import Updates from "@/components/Landing Page/News";
 import Sidebar from "@/components/Sidebar";
 import Link from "next/link";
+import { FaBars } from "react-icons/fa";
 
 export default function Home() {
     const [showSidebar, setShowSidebar] = useState(false);
@@ -79,7 +80,7 @@ export default function Home() {
                     className="fixed left-0 top-1/2 transform -translate-y-1/2 z-50 cursor-pointer ml-3 p-2 bg-gray-700 rounded-full text-white"
                     onClick={handleSidebarIconClick}
                 >
-                    &gt;&gt;
+                    <FaBars />
                 </div>
             )}
 
