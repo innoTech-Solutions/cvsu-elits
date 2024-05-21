@@ -28,12 +28,13 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                     <meta name="description" content={metadata.description} />
                 </head>
                     <body className="bg-gray-100">
+                        {loading && <Loading /> }
                         <div className="flex flex-col fixed w-full z-50">
                         
                             <Navigation />
                         </div>
                         <main>
-                            {loading && <Loading /> }
+                            
                             {children}
                             <Footer />
                         </main>
