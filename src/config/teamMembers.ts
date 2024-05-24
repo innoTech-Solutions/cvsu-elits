@@ -6,53 +6,53 @@ type Member = {
 
 const teamMembers: Array<Member> = [
     {
-        position: "Core",
+        position: "Officer",
         name: "John Doe",
         img: "https://randomuser.me/api/portraits/men/1.jpg",
     },
     {
-        position: "Research Committee",
+        position: "Officer",
         name: "Jane Smith",
         img: "https://randomuser.me/api/portraits/women/1.jpg",
     },
     {
-        position: "Research Committee",
+        position: "Officer",
         name: "Jane Smith",
         img: "https://randomuser.me/api/portraits/women/1.jpg",
     },
     {
-        position: "Research Committee",
+        position: "Officer",
         name: "Jane Smith",
         img: "https://randomuser.me/api/portraits/women/1.jpg",
     },
     {
-        position: "Academics Committee",
+        position: "Officer",
         name: "Bob Johnson",
         img: "https://randomuser.me/api/portraits/men/2.jpg",
     },
     {
-        position: "Academics Committee",
+        position: "Member",
         name: "Bob Johnson",
         img: "https://randomuser.me/api/portraits/men/2.jpg",
     },
     {
-        position: "Academics Committee",
+        position: "Member",
         name: "Bob Johnson",
         img: "https://randomuser.me/api/portraits/men/2.jpg",
     },
     {
-        position: "Academics Committee",
+        position: "Member",
         name: "Bob Johnson",
         img: "https://randomuser.me/api/portraits/men/2.jpg",
     },
     {
-        position: "Academics Committee",
+        position: "Member",
         name: "Bob Johnson",
         img: "https://randomuser.me/api/portraits/men/2.jpg",
     },
     {
-        position: "Core",
-        name: "Team Member 15",
+        position: "Member",
+        name: "Bob Johnson",
         img: "https://randomuser.me/api/portraits/men/15.jpg",
     },
 ];
