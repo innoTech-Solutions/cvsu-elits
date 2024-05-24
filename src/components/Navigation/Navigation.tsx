@@ -60,7 +60,7 @@ function Navigation() {
             )}
 
             {isMobile && (
-                <nav className="fixed bottom-0 left-0 right-0 bg-[#2F3233] bg-opacity-60 backdrop-blur-md flex justify-around items-center py-2 w-full drop-shadow-xl">
+                <nav className="fixed bottom-0 left-0 right-0 z-50 bg-[#2F3233] bg-opacity-60 backdrop-blur-md flex justify-around items-center py-2 w-full drop-shadow-xl">
                     <Link href="/" className="flex flex-col items-center">
                         <Home className="text-white w-6 h-6 cursor-pointer hover:text-orange-500 transition-colors duration-300" />
                         <span className="text-white text-xs">Home</span>

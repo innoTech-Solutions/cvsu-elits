@@ -20,15 +20,11 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                     <meta name="description" content={metadata.description} />
                 </head>
                     <body className="bg-gray-100">
-                        <nav>
-                            <Navigation />
-                        </nav>
+                        <Navigation />
                         <Suspense>
                                 <main>{children}</main>
                         </Suspense>
-                        <footer>
-                            <Footer />
-                        </footer>
+                        <Footer />
                     </body>
             </html>
         </>
