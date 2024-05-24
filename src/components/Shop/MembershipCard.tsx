@@ -23,8 +23,8 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from "./ui/card";
-import { Button } from "./ui/button";
+} from "../ui/card";
+import { Button } from "../ui/button";
 import { CheckCircle } from "lucide-react";
 
 interface MembershipCardProps {

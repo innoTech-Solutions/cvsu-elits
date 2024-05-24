@@ -1,7 +1,7 @@
 "use client"
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import MembershipCard from '../../components/MembershipCard';
+import MembershipCard from '../../components/Shop/MembershipCard';
 import { Toaster } from "@/components/ui/toaster"; 
 import { useToast } from "@/components/ui/use-toast"; 
 

@@ -1,4 +1,4 @@
-import AuthContainer from '@/components/AuthContainer'
+import AuthContainer from '@/components/Form/AuthContainer'
 const Form = () => {
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">

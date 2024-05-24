@@ -1,6 +1,6 @@
 "use client"
 import "./globals.css";
-import React, { useState, useEffect } from 'react';
+import React, { Suspense } from 'react';
 import Footer from '@/components/Footer/Footer';
 import Navigation from '@/components/Navigation/Navigation';
 import Loading from './loading';
@@ -11,14 +11,6 @@ const metadata = {
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 3000);
-        return () => clearTimeout(timer);
-    }, []); 
 
     return (
         <>
@@ -28,16 +20,15 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                     <meta name="description" content={metadata.description} />
                 </head>
                     <body className="bg-gray-100">
-                        {loading && <Loading /> }
-                        <div className="flex flex-col fixed w-full z-50">
-                        
+                        <nav>
                             <Navigation />
-                        </div>
-                        <main>
-                            
-                            {children}
+                        </nav>
+                        <Suspense>
+                                <main>{children}</main>
+                        </Suspense>
+                        <footer>
                             <Footer />
-                        </main>
+                        </footer>
                     </body>
             </html>
         </>
