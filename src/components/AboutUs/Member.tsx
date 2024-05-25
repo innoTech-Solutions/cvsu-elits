@@ -15,6 +15,7 @@ const Member = ({
                 className="w-32 h-32 rounded-full mb-4 border-4 border-white shadow-md"
                 alt="person_image"
                 src={img}
+                width={0} height={0}
             />
             <div className="flex flex-col items-center text-white">
                 <h1 className="text-xl font-bold text-center">{name}</h1>

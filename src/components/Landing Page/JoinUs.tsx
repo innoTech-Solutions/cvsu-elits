@@ -43,7 +43,7 @@ const JoinUs = ({ className }: { className: string }) => {
                             <div className="flex items-center gap-x-2 mb-4">
                                 <Image
                                     className="w-16 h-16 object-cover"
-                                    src="logo.svg" alt="Logo"
+                                    src="logo.svg" alt="Logo" width={0} height={0}
                                 />
                                 <div>
                                     <h3 className="text-xl font-bold">{job.position}</h3>
