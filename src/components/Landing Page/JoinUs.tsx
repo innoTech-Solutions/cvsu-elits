@@ -1,9 +1,8 @@
-"use client"
 import React, { useState } from "react";
 import { Pagination, PaginationContent, PaginationItem, PaginationNext, PaginationPrevious } from "../ui/pagination";
-import { jobPositions } from "@/config/jobPositionData";
-import { Badge } from "../ui/badge";
+import { positions } from "@/config/jobPositionData";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 
 const JoinUs = ({ className }: { className: string }) => {
     const rowsPerPage = 3;
@@ -32,7 +31,7 @@ const JoinUs = ({ className }: { className: string }) => {
             
                 <div id="positions" className="flex flex-wrap justify-center items-center gap-4">
                 
-                    {jobPositions.slice(startIndex, endIndex).map((job, index) => (
+                    {positions.slice(startIndex, endIndex).map((job, index) => (
                         <motion.div 
                         key={job.id} 
                         className="w-96 h-72 overflow-hidden bg-[#2F3233] p-4 lg:p-8 flex flex-col justify-between items-start rounded-lg shadow-lg my-2 text-white"
@@ -42,7 +41,7 @@ const JoinUs = ({ className }: { className: string }) => {
                         transition={{ duration: 0.5 }}>
                             <AnimatePresence>
                             <div className="flex items-center gap-x-2 mb-4">
-                                <img
+                                <Image
                                     className="w-16 h-16 object-cover"
                                     src="logo.svg" alt="Logo"
                                 />
@@ -52,11 +51,11 @@ const JoinUs = ({ className }: { className: string }) => {
                             </div>
 
                             <div className="my-4 w-full">
-                                <div className="text-sm font-medium flex flex-row gap-2 flex-wrap">
+                                <ul className="text-sm font-medium list-disc list-inside">
                                     {job.requirements.map((requirement, index) => (
-                                        <Badge key={index} className="hover:bg-[#f18700] bg-[#f18700] text-white">{requirement}</Badge>
+                                        <li key={index} className="text-[#f18700]">{requirement}</li>
                                     ))}
-                                </div>
+                                </ul>
                             </div>
                             <div className="flex justify-end w-full items-center mt-4">
                                 <button
@@ -90,13 +89,13 @@ const JoinUs = ({ className }: { className: string }) => {
                         <PaginationItem>
                             <PaginationNext
                                 className={
-                                    endIndex >= jobPositions.length
+                                    endIndex >= positions.length
                                         ? "pointer-events-none opacity-50"
                                         : "cursor-pointer"
                                 }
                                 onClick={() => {
-                                    setStartIndex(Math.min(jobPositions.length - rowsPerPage, startIndex + rowsPerPage));
-                                    setEndIndex(Math.min(jobPositions.length, endIndex + rowsPerPage));
+                                    setStartIndex(Math.min(positions.length - rowsPerPage, startIndex + rowsPerPage));
+                                    setEndIndex(Math.min(positions.length, endIndex + rowsPerPage));
                                 }}
                             />
                         </PaginationItem>
@@ -107,4 +106,4 @@ const JoinUs = ({ className }: { className: string }) => {
     );
 };
 
-export default JoinUs;  
+export default JoinUs;

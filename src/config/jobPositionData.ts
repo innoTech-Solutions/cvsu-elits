@@ -1,142 +1,99 @@
-type JobPosition = {
+type Position = {
     id: number;
     position: string;
     isOpen: boolean;
     requirements: string[];
 };
 
-export const jobPositions: JobPosition[] = [
+export const positions: Position[] = [
     {
         id: 1,
-        position: "Web Developer",
+        position: "Tech Club President",
         isOpen: true,
-        requirements: ["JavaScript", "Knowledge of React"],
+        requirements: [
+            "Leadership skills",
+            "Experience in organizing tech-related activities",
+        ],
     },
     {
         id: 2,
-        position: "Graphic Designer",
-        isOpen: true,
+        position: "Tech Club Vice President",
+        isOpen: false,
         requirements: [
-            "Proficiency in Adobe Creative Suite",
-            "Understanding of design principles",
+            "Assist the President in organizing activities",
+            "Coordinate with members and advisors",
         ],
     },
     {
         id: 3,
-        position: "Project Manager",
-        isOpen: false,
+        position: "Tech Club Treasurer",
+        isOpen: true,
         requirements: [
-            "Experience in project management",
-            "Excellent organizational skills",
+            "Financial management skills",
+            "Experience in budgeting for tech-related events",
         ],
     },
     {
         id: 4,
-        position: "Marketing Specialist",
+        position: "Tech Club Secretary",
         isOpen: false,
         requirements: [
-            "Experience in marketing",
-            "Knowledge of marketing strategies",
+            "Record-keeping and organizational skills",
+            "Assist in communication with members",
         ],
     },
     {
         id: 5,
-        position: "Event Coordinator",
+        position: "Tech Event Coordinator",
         isOpen: true,
         requirements: [
-            "Experience in event planning",
-            "Excellent communication skills",
+            "Experience in organizing tech events",
+            "Ability to collaborate with other organizations",
         ],
     },
-
     {
         id: 6,
-        position: "Data Analyst",
+        position: "Tech Workshop Facilitator",
         isOpen: true,
         requirements: [
-            "Experience with data analysis tools",
-            "Knowledge of SQL",
+            "Experience in conducting tech workshops",
+            "Ability to teach and engage with students",
         ],
     },
     {
         id: 7,
-        position: "Network Administrator",
+        position: "Tech Mentor",
         isOpen: false,
         requirements: [
-            "Experience with network infrastructure",
-            "Knowledge of network protocols",
+            "Experience in mentoring students in tech",
+            "Ability to provide guidance and support",
         ],
     },
     {
         id: 8,
-        position: "Database Manager",
+        position: "Tech Content Creator",
         isOpen: true,
         requirements: [
-            "Experience with database management",
-            "Knowledge of SQL",
+            "Ability to create engaging tech-related content",
+            "Experience in social media and online platforms",
         ],
     },
     {
         id: 9,
-        position: "Security Analyst",
+        position: "Tech Support Specialist",
         isOpen: false,
         requirements: [
-            "Experience with cybersecurity",
-            "Knowledge of security protocols",
+            "Experience in providing tech support",
+            "Ability to troubleshoot tech issues",
         ],
     },
     {
         id: 10,
-        position: "Systems Analyst",
+        position: "Tech Club Member",
         isOpen: true,
         requirements: [
-            "Experience with system analysis",
-            "Knowledge of system architectures",
-        ],
-    },
-    {
-        id: 11,
-        position: "IT Coordinator",
-        isOpen: true,
-        requirements: [
-            "Experience in IT coordination",
-            "Excellent organizational skills",
-        ],
-    },
-    {
-        id: 12,
-        position: "Software Engineer",
-        isOpen: false,
-        requirements: [
-            "Experience with software development",
-            "Knowledge of programming languages",
-        ],
-    },
-    {
-        id: 13,
-        position: "Hardware Engineer",
-        isOpen: true,
-        requirements: [
-            "Experience with hardware engineering",
-            "Knowledge of hardware components",
-        ],
-    },
-    {
-        id: 14,
-        position: "Cloud Architect",
-        isOpen: false,
-        requirements: [
-            "Experience with cloud services",
-            "Knowledge of cloud architectures",
-        ],
-    },
-    {
-        id: 15,
-        position: "IT Support Specialist",
-        isOpen: true,
-        requirements: [
-            "Experience in IT support",
-            "Excellent communication skills",
+            "Interest in technology",
+            "Willingness to participate in club activities",
         ],
     },
 ];
