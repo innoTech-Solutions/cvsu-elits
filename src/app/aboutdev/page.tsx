@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React from 'react';
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 
@@ -29,7 +28,7 @@ const AboutDev = () => {
         {mockData.map((person, index) => (
           <div key={index} className="relative flex flex-col items-center text-gray-700 bg-white shadow-md rounded-xl w-full max-w-xs">
             <div className="relative w-full h-80 overflow-hidden rounded-t-xl">
-              <Image src={person.image} alt={`${person.name}'s profile`} className="w-full h-full object-cover" />
+              <img src={person.image} alt={`${person.name}'s profile`} className="w-full h-full object-cover" />
             </div>
             <div className="p-6 text-center">
               <h4 className="block mb-2 font-sans text-2xl font-semibold text-blue-gray-900">

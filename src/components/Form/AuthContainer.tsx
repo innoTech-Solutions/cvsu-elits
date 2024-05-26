@@ -11,7 +11,7 @@ const AuthContainer = () => {
     };
 
     return (
-        <div className="w-full max-w-md p-8 space-y-8 bg-white shadow-md rounded-lg mt-10">
+        <div className="w-full max-w-md p-8 space-y-8 bg-white shadow-md rounded-lg mt-10 mx-10">
             {isLogin ? (
                 <Login toggleAuthComponent={toggleAuthComponent} />
             ) : (
