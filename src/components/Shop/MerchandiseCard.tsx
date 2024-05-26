@@ -9,16 +9,16 @@ interface MerchandiseCardProps {
 
 const MerchandiseCard: React.FC<MerchandiseCardProps> = ({ image, name, price, onBuy }) => {
   return (
-    <div className="max-w-sm rounded-lg overflow-hidden shadow-md bg-white transform transition duration-500 hover:scale-105 hover:shadow-xl">
-      <img className="w-full h-48 object-cover" src={image} alt={name}/>
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2 text-orange-600">{name}</div>
-        <p className="text-gray-600 text-base">${price}</p>
+    <div className="max-w-sm rounded-lg overflow-hidden shadow-md bg-white border border-gray-200 transform transition duration-500 hover:-translate-y-1 hover:shadow-lg cursor-pointer">
+      <img className="w-full h-48 object-cover transition-transform duration-300 hover:scale-110" src={image} alt={name}/>
+      <div className="p-4">
+        <div className="font-bold text-2xl mb-2 text-orange-500">{name}</div>
+        <p className="text-gray-600 text-base font-semibold">${price}</p>
       </div>
-      <div className="px-6 py-4">
+      <div className="p-4">
         <button
           onClick={onBuy}
-          className="bg-gray-800 hover:bg-orange-600 w-full text-white font-semibold py-2 px-4 rounded-lg transition duration-300"
+          className="bg-orange-600 hover:bg-orange-500 hover:text-black w-full text-white font-semibold py-2 px-4 rounded-lg transition duration-300"
         >
           Buy
         </button>

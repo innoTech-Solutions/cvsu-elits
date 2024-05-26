@@ -4,19 +4,20 @@ import { motion } from 'framer-motion';
 import MembershipCard from '../../components/Shop/MembershipCard';
 import MerchandiseList from '../../components/Shop/MerchandiseList';
 import merchandiseData from '@/config/merchandiseData';
-import { Toaster } from "@/components/ui/toaster"; 
-import { useToast } from "@/components/ui/use-toast"; 
+import { Toaster } from "@/components/ui/toaster";
+import { useToast } from "@/components/ui/use-toast";
 import PurchaseOption from '@/components/Shop/PurchaseOption';
+import MerchandiseContainer from '@/components/Shop/MerchandiseContainer';
 
 const Shop = () => {
-  const { toast } = useToast(); 
+  const { toast } = useToast();
 
   useEffect(() => {
     toast({
       title: "Membership Benefits",
       description: "Join now to get access to exclusive events, newsletters, discounts, and more!",
     });
-  }, [toast]); 
+  }, [toast]);
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -72,9 +73,21 @@ const Shop = () => {
           Popular Merchandise
         </motion.h3>
 
-        <MerchandiseList items={merchandiseData} />
+        <MerchandiseContainer>
+          <MerchandiseList items={merchandiseData} />
+          <div className="flex justify-end">
+            <button
+              className="relative bg-transparent hover:bg-orange-500 border border-solid border-orange-500 text-black font-semibold py-2 px-4 transition duration-300 mt-6"
+              onClick={() => alert('See more merchandise clicked')}
+            >
+              See more merchandise {'->'}
+            </button>
 
-        {/* Purchase Options Section */}
+
+          </div>
+        </MerchandiseContainer>
+
+
         <motion.h3
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
