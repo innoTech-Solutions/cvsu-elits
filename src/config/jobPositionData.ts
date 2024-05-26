@@ -30,7 +30,7 @@ export const positions: Position[] = [
         isOpen: true,
         requirements: [
             "Financial management skills",
-            "Experience in budgeting for tech-related events",
+            "Experience in budgeting for related events",
         ],
     },
     {
@@ -75,7 +75,7 @@ export const positions: Position[] = [
         isOpen: true,
         requirements: [
             "Ability to create engaging tech-related content",
-            "Experience in social media and online platforms",
+            "Experience in online platforms",
         ],
     },
     {
