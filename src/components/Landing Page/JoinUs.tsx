@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { Pagination, PaginationContent, PaginationItem, PaginationNext, PaginationPrevious } from "../ui/pagination";
-import { positions } from "@/config/jobPositionData";
+import { positions as allPositions } from "@/config/jobPositionData";
 import { AnimatePresence, motion } from "framer-motion";
 
 const JoinUs = ({ className }: { className: string }) => {
     const rowsPerPage = 3;
     const [startIndex, setStartIndex] = useState(0);
     const [endIndex, setEndIndex] = useState(rowsPerPage);
+    const [showOnlyOpenPositions, setShowOnlyOpenPositions] = useState(false);
+
+    // Filter positions based on showOnlyOpenPositions
+    const positions = showOnlyOpenPositions ? allPositions.filter(pos => pos.isOpen) : allPositions;
 
     return (
         <div
@@ -27,13 +31,28 @@ const JoinUs = ({ className }: { className: string }) => {
                         we&apos;d love to have you on board.
                     </p>
                 </div>
-            
-                <div id="positions" className="flex flex-wrap justify-center items-center gap-6">
                 
+                <div id="positions" className="relative flex flex-wrap justify-center items-center gap-6">
+                    {/* Filter button */}
+                    <button
+                        className={`bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg focus:outline-none transition-colors duration-300 ${
+                            showOnlyOpenPositions ? 'text-gray-600' : 'text-gray-900'
+                        }`}
+                        onClick={() => setShowOnlyOpenPositions(!showOnlyOpenPositions)}
+                        style={{
+                            position: 'absolute',
+                            top: '-50px',
+                            right: '0',
+                            zIndex: '10',
+                        }}
+                    >
+                        {showOnlyOpenPositions ? "Show All Positions" : "Show Only Open Positions"}
+                    </button>
+                    
                     {positions.slice(startIndex, endIndex).map((job) => (
                         <motion.div 
                             key={job.id} 
-                            className="relative w-96 h-80 overflow-hidden bg-[#2F3233] p-6 lg:p-8 flex flex-col justify-between items-start rounded-xl shadow-xl my-2 text-white cursor-pointer"
+                            className="w-96 h-80 overflow-hidden bg-[#2F3233] p-6 lg:p-8 flex flex-col justify-between items-start rounded-xl shadow-xl my-2 text-white cursor-pointer relative"
                             initial={{ opacity: 0, y: -50 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 50 }}
@@ -70,7 +89,6 @@ const JoinUs = ({ className }: { className: string }) => {
                             </AnimatePresence>
                         </motion.div>
                     ))}
-                
                 </div>
 
                 <Pagination>
