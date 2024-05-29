@@ -32,9 +32,9 @@ const News = ({ className }: { className: string }) => {
 
     return (
         <div ref={ref} className={`${className}`}>
-            <h1 className="text-4xl font-bold text-[#2F3233] py-8 ml-5">Latest news</h1>
+            <h1 className="text-4xl font-bold text-[#2F3233] py-8 ">Latest news</h1>
 
-            <div className="flex flex-col lg:flex-row gap-4 ml-5">
+            <div className="flex flex-col lg:flex-row gap-4">
                 {/* LARGE NEWS (1) */}
                 <Link href={""} className="w-full lg:w-1/2 flex flex-col">
                     <motion.img

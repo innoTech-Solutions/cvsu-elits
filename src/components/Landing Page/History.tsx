@@ -62,7 +62,7 @@ const History = () => {
         initial={{ opacity: 0, y: 40 }}
         animate={controls}
       >
-        <h1 className="text-5xl text-[#2F3233] text-center font-bold mb-8">History</h1>
+        <h1 className="text-4xl text-[#2F3233] text-center font-bold mb-8 py-8">History</h1>
         <Timeline mode="alternate">
           {timelineData.map((item, index) => (
             <Timeline.Item

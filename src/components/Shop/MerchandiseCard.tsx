@@ -9,8 +9,8 @@ interface MerchandiseCardProps {
 
 const MerchandiseCard: React.FC<MerchandiseCardProps> = ({ image, name, price, onBuy }) => {
   return (
-    <div className="max-w-sm rounded-lg overflow-hidden shadow-md bg-white border border-gray-200 transform transition duration-500 hover:-translate-y-1 hover:shadow-lg cursor-pointer">
-      <img className="w-full h-48 object-cover transition-transform duration-300 hover:scale-110" src={image} alt={name}/>
+    <div className="w-80 max-w-sm rounded-lg overflow-hidden shadow-md bg-white border border-gray-200 transform transition duration-500 hover:-translate-y-1 hover:shadow-lg cursor-pointer">
+      <img className="w-full h-64 object-cover transition-transform duration-300 hover:scale-110" src={image} alt={name}/>
       <div className="p-4">
         <div className="font-bold text-2xl mb-2 text-orange-500">{name}</div>
         <p className="text-gray-600 text-base font-semibold">${price}</p>

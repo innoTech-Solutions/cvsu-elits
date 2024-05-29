@@ -84,7 +84,7 @@ export default function Home() {
                 </div>
             )}
 
-            <div className="mx-3">
+            <div className="mx-12">
                 <div id="hero">
                     <HeroSection />
                 </div>

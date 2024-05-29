@@ -26,6 +26,7 @@ import {
 } from "../ui/card";
 import { Button } from "../ui/button";
 import { CheckCircle } from "lucide-react";
+import { FaCheck } from "react-icons/fa";
 
 interface MembershipCardProps {
     className?: string;
@@ -111,8 +112,8 @@ const MembershipCard = ({
                     <CardFooter
                         className={`flex flex-col items-start ${backgroundColor}`}
                     >
-                        <div className="flex flex-row gap-2">
-                            <div>
+                        <div className="flex flex-row gap-2 w-full">
+                            <div className="w-full">
                                 <h2
                                     className={`text-md  ${textColor} font-bold `}
                                 >
@@ -124,9 +125,10 @@ const MembershipCard = ({
                                             key={index}
                                             className={`text-sm flex flex-row gap-2 my-2 items-center ${textColor}`}
                                         >
-                                            <CheckCircle
+                                                <FaCheck
                                                 size={16}
-                                                color={`${headerTextColor}`}
+                                                className={`${headerTextColor}`}
+                                                // color={`${headerTextColor}`}
                                             />
                                             {perk}
                                         </li>
@@ -134,7 +136,7 @@ const MembershipCard = ({
                                 </ul>
                             </div>
 
-                            <div>
+                            <div className="w-full">
                                 <h2
                                     className={`text-md  ${textColor} font-bold `}
                                 >
@@ -147,10 +149,10 @@ const MembershipCard = ({
                                                 key={index}
                                                 className={`text-sm flex flex-row gap-2 my-2 items-center ${textColor}`}
                                             >
-                                                <CheckCircle
-                                                    size={16}
+                                                <FaCheck
+                                                size={16}
                                                     className={`${headerTextColor}`}
-                                                    color={`${headerTextColor}`}
+                                                    // color={`${headerTextColor}`}
                                                 />
                                                 {resource}
                                             </li>

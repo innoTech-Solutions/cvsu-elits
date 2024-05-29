@@ -55,7 +55,7 @@ const Awards = () => {
 
     return (
         <div ref={ref} className="min-h-screen flex flex-col items-center justify-center bg-gray-100 relative">
-            <h1 className="text-5xl font-bold mb-10 text-[#2F3233]">Top Most Awards</h1>
+            <h1 className="text-4xl font-bold text-[#2F3233] py-8">Top Awards</h1>
             <div className={`grid grid-cols-1 sm:grid-cols-${isMobile ? '1' : '2'} md:grid-cols-3 lg:grid-cols-3 gap-4 mx-12`}>
                 {awardsData.map((award, index) => (
                     <motion.div
