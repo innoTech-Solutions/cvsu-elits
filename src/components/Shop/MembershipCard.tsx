@@ -8,8 +8,8 @@
  * @param {string} price - The price of the membership.
  * @param {string} priceDescription - The description of the price.
  * @param {string[]} accessToResources - The list of resources accessible with the membership.
- * @param {str${backgroundColor} - The optional custom background color needs to be a hex.
- * @param {s${textColor}- The optional custom text color needs to be a hex
+ * @param {string} [backgroundColor] - The optional custom background color needs to be a hex.
+ * @param {string} [textColor] - The optional custom text color needs to be a hex.
  * @param {string} [headerTextColor] - The optional custom header color needs to be a hex.
  * @returns {JSX.Element} The rendered membership card component.
  */
@@ -25,16 +25,15 @@ import {
     CardTitle,
 } from "../ui/card";
 import { Button } from "../ui/button";
-import { CheckCircle } from "lucide-react";
 import { FaCheck } from "react-icons/fa";
 
 interface MembershipCardProps {
     className?: string;
     membershipType: string;
-    backgroundColor?: string; // Optional prop for custom background${textColor} string; // Optional prop for custom text color
-    textColor?: string; // Optional prop for custom text color
-    headerTextColor?: string; // Optional prop for custom text color
-    headerBackgroundColor?: string; // Optional prop for custom text color
+    backgroundColor?: string;
+    textColor?: string;
+    headerTextColor?: string;
+    headerBackgroundColor?: string;
     perks: string[];
     price: string;
     priceDescription?: string;
@@ -47,11 +46,11 @@ const MembershipCard = ({
     price,
     priceDescription,
     perks = [""],
-    accessToResources = [""], // Default to empty string
-    backgroundColor = "white", // Optional prop for custom background${textColor} "black", // Optional prop for custom text color
-    textColor = "text-black", // Optional prop for custom text color
+    accessToResources = [""],
+    backgroundColor = "white",
+    textColor = "text-black",
     headerTextColor = "text-black",
-    headerBackgroundColor = "bg-orange-500", // Optional prop for custom text color
+    headerBackgroundColor = "bg-orange-500",
 }: MembershipCardProps) => {
     return (
         <motion.div
@@ -59,105 +58,62 @@ const MembershipCard = ({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
         >
-            {/* <Card
-                        className={`shadow-lg rounded-lg overflow-hidden flex flex-col justify-between h-full ${
-    ${backgroundColor}||
-                            (type.toLowerCase() === "gold membership"
-                                ? "bg-[#FFEE51]"
-                                : type.toLowerCase() === "silver membership"
-                                ? "bg-[#ACACAB]"
-                                : "bg-[#F6F6F4]")
-                        }`}
-                    > */}
-
             <Card
-                className={`${className} ${backgroundColor} ${textColor} px-2 py-4 shadow-lg rounded-lg overflow-hidden flex flex-col justify-between flex-shrink-0 m-0 p-0`}
+                className={`${className} ${backgroundColor} ${textColor} px-4 py-2 shadow-lg rounded-lg overflow-hidden flex flex-col justify-between m-0 p-0`}
             >
                 <CardContent className={`${backgroundColor} ${textColor}`}>
                     <CardHeader className={`${backgroundColor} mx-0 px-0`}>
                         <CardTitle
-                            className={`${textColor} ${headerTextColor} text-xl font-bold`}
+                            className={`${textColor} ${headerTextColor} text-lg font-bold`}
                         >
                             {membershipType}
                         </CardTitle>
                     </CardHeader>
 
-                    <CardDescription
-                        className={`flex flex-col [&>*]:my-2 ${backgroundColor} ${textColor}`}
-                    >
+                    <CardDescription className={`flex flex-col ${backgroundColor} ${textColor}`}>
                         <div className={`flex flex-row gap-2`}>
-                            <p className={`font-bold text-4xl ${textColor}`}>{price}</p>
+                            <p className={`font-bold text-3xl ${textColor}`}>{price}</p>
                             <div className="flex items-center flex-col">
-                                <p>per member</p>
-                                <p>{priceDescription}</p>
+                                <p className="text-sm">per member</p>
+                                <p className="text-sm">{priceDescription}</p>
                             </div>
                         </div>
 
-                        <div className="flex !flex-col [&>*]:my-0.5">
-                            <Button
-                                className={`${headerTextColor} ${headerBackgroundColor} hover:${headerBackgroundColor} hover:${headerTextColor} ${textColor}`}
-                            >
+                        <div className="flex flex-col gap-1 mt-2">
+                            <Button className={`${headerTextColor} ${headerBackgroundColor} hover:${headerBackgroundColor} hover:${headerTextColor} ${textColor} py-1`}>
                                 Join Now
                             </Button>
-                            <Button
-                                className={`${headerTextColor} ${headerBackgroundColor} hover:${headerBackgroundColor}-darker hover:${headerTextColor} ${textColor}`}
-                            >
+                            <Button className={`${headerTextColor} ${headerBackgroundColor} hover:${headerBackgroundColor}-darker hover:${headerTextColor} ${textColor} py-1`}>
                                 Chat representative
                             </Button>
                         </div>
                     </CardDescription>
 
-                    <div className="w-full h-0.5 bg-gray-500 px-0 my-4" />
+                    <div className="w-full h-0.5 bg-gray-500 mt-2 mb-3" />
 
-                    <CardFooter
-                        className={`flex flex-col items-start ${backgroundColor}`}
-                    >
-                        <div className="flex flex-row gap-2 w-full">
-                            <div className="w-full">
-                                <h2
-                                    className={`text-md  ${textColor} font-bold `}
-                                >
-                                    Perks
-                                </h2>
-                                <ul className="list-none mb-4">
+                    <CardFooter className={`flex flex-col items-start ${backgroundColor}`}>
+                        <div className="flex flex-row gap-4 w-full">
+                            <div className="w-1/2">
+                                <h2 className={`text-md ${textColor} font-bold`}>Perks</h2>
+                                <ul className="list-none">
                                     {perks.map((perk, index) => (
-                                        <li
-                                            key={index}
-                                            className={`text-sm flex flex-row gap-2 my-2 items-center ${textColor}`}
-                                        >
-                                                <FaCheck
-                                                size={16}
-                                                className={`${headerTextColor}`}
-                                                // color={`${headerTextColor}`}
-                                            />
+                                        <li key={index} className={`text-sm flex items-center gap-2 ${textColor}`}>
+                                            <FaCheck size={12} className={`${headerTextColor}`} />
                                             {perk}
                                         </li>
                                     ))}
                                 </ul>
                             </div>
 
-                            <div className="w-full">
-                                <h2
-                                    className={`text-md  ${textColor} font-bold `}
-                                >
-                                    Resources
-                                </h2>
-                                <ul className="list-none mb-4">
-                                    {accessToResources.map(
-                                        (resource, index) => (
-                                            <li
-                                                key={index}
-                                                className={`text-sm flex flex-row gap-2 my-2 items-center ${textColor}`}
-                                            >
-                                                <FaCheck
-                                                size={16}
-                                                    className={`${headerTextColor}`}
-                                                    // color={`${headerTextColor}`}
-                                                />
-                                                {resource}
-                                            </li>
-                                        )
-                                    )}
+                            <div className="w-1/2">
+                                <h2 className={`text-md ${textColor} font-bold`}>Resources</h2>
+                                <ul className="list-none">
+                                    {accessToResources.map((resource, index) => (
+                                        <li key={index} className={`text-sm flex items-center gap-2 ${textColor}`}>
+                                            <FaCheck size={12} className={`${headerTextColor}`} />
+                                            {resource}
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                         </div>
@@ -168,8 +124,4 @@ const MembershipCard = ({
     );
 };
 
-// <div className="flex justify-center w-full">
-//     <div className="w-80 flex-shrink-0">
-//     </div>
-// </div>
 export default MembershipCard;

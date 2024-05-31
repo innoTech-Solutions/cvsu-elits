@@ -38,7 +38,7 @@ const Shop = () => {
                 transition={{ duration: 0.5 }}
                 className="text-lg md:text-2xl text-gray-500 font-base mt-2 mb-4 md:mb-8 text-center"
             >
-                choose a plan that suits your needs
+                Choose a plan that suits your needs
             </motion.h4>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-4 md:mx-10">
