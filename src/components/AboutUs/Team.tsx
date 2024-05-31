@@ -14,6 +14,7 @@ const Team = ({ committee }: { committee: string }) => {
                                 key={index}
                                 position={member.position}
                                 name={member.name}
+                                bio={member.bio}
                                 img={member.img}
                                 backgroundImage="logo.svg"
                             />

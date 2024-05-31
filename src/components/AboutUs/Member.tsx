@@ -1,11 +1,13 @@
 const Member = ({
     position,
     name,
+    bio,
     img,
     backgroundImage,
 }: {
     position: string;
     name: string;
+    bio: string;
     img: string;
     backgroundImage: string;
 }) => {
@@ -36,6 +38,7 @@ const Member = ({
                 <div className="flex flex-col items-center text-white">
                     <h1 className="text-2xl text-white font-bold text-center">{name}</h1>
                     <h2 className="text-lg text-orange-500 font-semibold text-center">{position}</h2>
+                    {/* <h3 className="text-sm text-white text-center">{bio.slice(0, 100)}</h3> */}
                 </div>
             </div>
         </div>
