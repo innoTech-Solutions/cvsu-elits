@@ -28,13 +28,6 @@ const MerchandiseList: React.FC<MerchandiseListProps> = ({ items }) => {
                         onBuy={() => handleBuy(item)}
                     />
                 </div>
-                // <MerchandiseCard
-                //   key={item.id}
-                //   image={item.image}
-                //   name={item.name}
-                //   price={item.price}
-                //   onBuy={() => handleBuy(item)}
-                // />
             ))}
         </div>
     );
